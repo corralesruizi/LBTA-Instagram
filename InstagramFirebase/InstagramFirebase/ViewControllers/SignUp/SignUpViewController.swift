@@ -11,11 +11,19 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        
+        navigationController?.isNavigationBarHidden=true
     }
     
     func setPhoto(image: UIImage)
     {
         btnAddPhoto.setImage(image, for: .normal)
+    }
+    
+    
+    fileprivate func setupUI()
+    {
         btnAddPhoto.layer.cornerRadius = btnAddPhoto.frame.width/2
         btnAddPhoto.layer.masksToBounds = true
         btnAddPhoto.layer.borderColor = UIColor.black.cgColor
@@ -96,6 +104,11 @@ class SignUpViewController: UIViewController {
             })
         })
     }
+    
+    @IBAction func singInAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     @IBAction func addPhotoTouchUpInside(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()

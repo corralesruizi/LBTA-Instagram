@@ -14,6 +14,10 @@ class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var cvUserImages: UICollectionView!
     
+    deinit {
+        print("Profile Gone")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +31,33 @@ class UserProfileViewController: UIViewController {
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
         fetchUser()
+        setupLogoutButton()
+    }
+    
+    fileprivate func setupLogoutButton()
+    {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(LogoutHandle))
+    }
+    
+    @objc func LogoutHandle()
+    {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            
+            do {
+                try Auth.auth().signOut()
+                
+                //what happens? we need to present some kind of login controller
+                
+            } catch let signOutErr {
+                print("Failed to sign out:", signOutErr)
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     fileprivate func fetchUser() {
@@ -58,17 +89,32 @@ extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind, withReuseIdentifier: HeaderCollectionViewCell.cellKey, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind, withReuseIdentifier: HeaderCollectionViewCell.cellKey, for: indexPath) as! HeaderCollectionViewCell
+        header.updateHeader()
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 400)
+        return CGSize(width: UIScreen.main.bounds.width, height: 190)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100,height: 100)
+        let dimen = (UIScreen.main.bounds.width-2)/3
+        return CGSize(width: dimen,height: dimen)
     }
 }
