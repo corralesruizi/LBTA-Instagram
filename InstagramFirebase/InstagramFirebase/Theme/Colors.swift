@@ -14,5 +14,5 @@ final class AppColor{
     private init(){}
     
     static let mainAppColor:UIColor = UIColor(named: "mainAppColor") ?? UIColor.white
-    static let lightMainAppColor:UIColor = UIColor(named: "mainAppColor") ?? UIColor.white
+    static let lightMainAppColor:UIColor = UIColor(named: "mainLightAppColor") ?? UIColor.white
 }

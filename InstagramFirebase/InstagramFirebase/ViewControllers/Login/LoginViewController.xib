@@ -40,6 +40,10 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="6d4-eI-Hjg"/>
+                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="IAa-kn-zRc"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pk9-D4-nIA">
                             <rect key="frame" x="0.0" y="44" width="280" height="30"/>
@@ -47,6 +51,10 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            <connections>
+                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="kIN-CQ-u9K"/>
+                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="zYY-1Y-J7m"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73q-OU-2cm">
                             <rect key="frame" x="0.0" y="87.999999999999972" width="280" height="30"/>

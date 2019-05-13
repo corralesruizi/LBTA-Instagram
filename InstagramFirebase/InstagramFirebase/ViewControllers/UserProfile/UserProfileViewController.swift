@@ -1,11 +1,3 @@
-//
-//  UserProfileViewController.swift
-//  InstagramFirebase
-//
-//  Created by Developer on 5/7/19.
-//  Copyright © 2019 Developer. All rights reserved.
-//
-
 import UIKit
 import Firebase
 import Foundation
@@ -43,20 +35,21 @@ class UserProfileViewController: UIViewController {
     {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] (_) in
             
             do {
                 try Auth.auth().signOut()
                 
-                //what happens? we need to present some kind of login controller
+                let loginController = LoginViewController()
+                let navController = UINavigationController(rootViewController: loginController)
+                self?.present(navController, animated: true, completion: nil)
                 
             } catch let signOutErr {
-                print("Failed to sign out:", signOutErr)
+                AlertView.showAlert(view: self, title: "", message: "An Error has occured: \(signOutErr)")
             }
         }))
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         present(alertController, animated: true, completion: nil)
     }
     

@@ -55,10 +55,10 @@ class SignUpViewController: UIViewController {
         guard let password = txtPassword.text, !password.isEmpty else{return}
         guard let image = btnAddPhoto.imageView?.image,image != #imageLiteral(resourceName: "addPhoto") else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error: Error?) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] (user, error: Error?) in
             
             if let err = error {
-                print("Failed to create user:", err)
+                AlertView.showAlert(view: self, title: "", message: err.localizedDescription)
                 return
             }
             
@@ -97,13 +97,16 @@ class SignUpViewController: UIViewController {
                             return
                         }
                         
-                        print("Successfully saved user info to db")
-                        
+                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController
+                            as? MainTabBarController else { return }
+                        mainTabBarController.setupTabs()
+                        self?.dismiss(animated: true, completion: nil)
                     })
                 })
             })
         })
     }
+    
     
     @IBAction func singInAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
