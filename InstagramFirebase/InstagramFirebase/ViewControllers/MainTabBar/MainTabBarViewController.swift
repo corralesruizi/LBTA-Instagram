@@ -1,12 +1,13 @@
 import Foundation
 import UIKit
 import Firebase
+import Photos
 
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.delegate = self
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async { [weak self] in
                 let loginController = LoginViewController()
@@ -54,5 +55,34 @@ class MainTabBarController: UITabBarController {
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
         return navController
+    }
+}
+
+extension MainTabBarController : UITabBarControllerDelegate
+{
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
+        
+        print("index")
+        
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            
+            PHPhotoLibrary.requestAuthorization { [weak self](authStatus) in
+                switch authStatus {
+                case .authorized:
+                    DispatchQueue.main.async {
+                        let navController = UINavigationController(rootViewController: AddPhotosViewController())
+                        self?.present(navController, animated: true, completion: nil)
+                    }
+                default:
+                    break
+                }
+            }
+            
+            return false
+        }
+        
+        return true
     }
 }

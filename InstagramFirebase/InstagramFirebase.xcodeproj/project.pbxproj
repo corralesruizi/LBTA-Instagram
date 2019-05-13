@@ -23,6 +23,10 @@
 		8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */; };
 		8B7AF7E6227CA46F0009BB40 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */; };
 		8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */; };
+		8B83F9382289FC1700AC9260 /* AddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F9362289FC1700AC9260 /* AddPhotosViewController.swift */; };
+		8B83F9392289FC1700AC9260 /* AddPhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F9372289FC1700AC9260 /* AddPhotosViewController.xib */; };
+		8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F93B2289FD1200AC9260 /* AddPhotosHeaderView.swift */; };
+		8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F93C2289FD1200AC9260 /* AddPhotosHeaderView.xib */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
 		DC5971A2A725B3B23B2B67E3 /* Pods_InstagramFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +52,10 @@
 		8B7AF7DD227CA14A0009BB40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		8B83F9362289FC1700AC9260 /* AddPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotosViewController.swift; sourceTree = "<group>"; };
+		8B83F9372289FC1700AC9260 /* AddPhotosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotosViewController.xib; sourceTree = "<group>"; };
+		8B83F93B2289FD1200AC9260 /* AddPhotosHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotosHeaderView.swift; sourceTree = "<group>"; };
+		8B83F93C2289FD1200AC9260 /* AddPhotosHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotosHeaderView.xib; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -180,12 +188,32 @@
 		8B7AF7E3227CA3420009BB40 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B83F9352289FBAA00AC9260 /* AddPhotos */,
 				8B50B47E2284B9A50015B77A /* Login */,
 				8B4760B92281C06C001AE0AD /* UserProfile */,
 				8B4760B62281BF7E001AE0AD /* MainTabBar */,
 				8B4760B52281BF6E001AE0AD /* SignUp */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8B83F9352289FBAA00AC9260 /* AddPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F93A2289FC3500AC9260 /* Cells */,
+				8B83F9362289FC1700AC9260 /* AddPhotosViewController.swift */,
+				8B83F9372289FC1700AC9260 /* AddPhotosViewController.xib */,
+			);
+			path = AddPhotos;
+			sourceTree = "<group>";
+		};
+		8B83F93A2289FC3500AC9260 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F93B2289FD1200AC9260 /* AddPhotosHeaderView.swift */,
+				8B83F93C2289FD1200AC9260 /* AddPhotosHeaderView.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		8BC210822280D47A00FBD0E1 /* Protocols */ = {
@@ -268,10 +296,12 @@
 				8B4760BD2281C08B001AE0AD /* UserProfileViewController.xib in Resources */,
 				8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */,
 				8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */,
+				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
 				8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */,
 				8B4760C72281D4DD001AE0AD /* HeaderCollectionViewCell.xib in Resources */,
 				8B4760C32281D4AE001AE0AD /* ImageCollectionViewCell.xib in Resources */,
 				8B7AF7D9227CA14A0009BB40 /* Assets.xcassets in Resources */,
+				8B83F9392289FC1700AC9260 /* AddPhotosViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +366,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
+				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8B795F6B228094280073CA66 /* Colors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
 				8B4760C62281D4DD001AE0AD /* HeaderCollectionViewCell.swift in Sources */,
 				8B50B4812284BFE20015B77A /* LoginViewController.swift in Sources */,
+				8B83F9382289FC1700AC9260 /* AddPhotosViewController.swift in Sources */,
 				8B4760B82281BFAB001AE0AD /* MainTabBarViewController.swift in Sources */,
 				8B7AF7E6227CA46F0009BB40 /* SignUpViewController.swift in Sources */,
 				8B50B4852285C05D0015B77A /* AlertView.swift in Sources */,
@@ -481,7 +513,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21F63CDBC8B06090239A232C /* Pods-InstagramFirebase.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;
@@ -502,7 +533,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29953158CC0CBFEE2A6787F5 /* Pods-InstagramFirebase.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;

@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-final class AppColor{
-    
-    private init(){}
-    
+extension UIColor
+{
     static let mainAppColor:UIColor = UIColor(named: "mainAppColor") ?? UIColor.white
     static let lightMainAppColor:UIColor = UIColor(named: "mainLightAppColor") ?? UIColor.white
+    
 }

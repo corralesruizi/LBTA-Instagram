@@ -46,12 +46,12 @@ class LoginViewController: UIViewController {
         
         if isFormValid{
             btnLogIn.isEnabled=true
-            btnLogIn.backgroundColor = AppColor.mainAppColor
+            btnLogIn.backgroundColor = .mainAppColor
         }
         else
         {
             btnLogIn.isEnabled=false
-            btnLogIn.backgroundColor = AppColor.lightMainAppColor
+            btnLogIn.backgroundColor = .lightMainAppColor
         }
         
     }
