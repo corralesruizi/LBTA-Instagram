@@ -513,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21F63CDBC8B06090239A232C /* Pods-InstagramFirebase.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;
@@ -533,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29953158CC0CBFEE2A6787F5 /* Pods-InstagramFirebase.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;

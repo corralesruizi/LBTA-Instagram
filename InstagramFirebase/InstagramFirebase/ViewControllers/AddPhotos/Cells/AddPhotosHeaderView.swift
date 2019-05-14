@@ -11,9 +11,4 @@ class AddPhotosHeaderView: UICollectionViewCell {
         super.awakeFromNib()
         
     }
-    
-    func updatePhoto(_ image:UIImage){
-        imgPhoto.image=image
-    }
-    
 }

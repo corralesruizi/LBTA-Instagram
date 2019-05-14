@@ -48,8 +48,9 @@ class AddPhotosViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             
             allPhotos.enumerateObjects({ (asset, count, stop) in
+                let dimen = (UIScreen.main.bounds.width-3)/4
                 let imageManager = PHImageManager.default()
-                let targetSize = CGSize(width: 200, height: 200)
+                let targetSize = CGSize(width: dimen, height: dimen)
                 let options = PHImageRequestOptions()
                 options.isSynchronous = true
                 imageManager.requestImage(for: asset, targetSize: targetSize,contentMode: .aspectFit, options: options,
@@ -120,9 +121,13 @@ extension AddPhotosViewController:UICollectionViewDataSource,UICollectionViewDel
                 
                 let imageManager = PHImageManager.default()
                 let targetSize = CGSize(width: 600, height: 600)
-                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil, resultHandler: { (image, info) in
+                imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil, resultHandler: { [weak self](image, info) in
                     
-                    header.imgPhoto.image = image
+                    DispatchQueue.main.async{
+                        header.imgPhoto.image = image
+                        self?.cvPhotos.setContentOffset(.zero, animated: false)
+                    }
+                 
                 })
                 
             }
