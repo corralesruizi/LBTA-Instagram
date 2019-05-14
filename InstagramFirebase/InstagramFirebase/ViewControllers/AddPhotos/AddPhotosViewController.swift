@@ -27,9 +27,10 @@ class AddPhotosViewController: UIViewController {
     }
     
     fileprivate func setupNavigationButtons() {
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(handleCancel))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(handleNext))
+        navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions{
