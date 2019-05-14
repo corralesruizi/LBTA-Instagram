@@ -7,6 +7,7 @@ class AddPhotosViewController: UIViewController {
     var images = [UIImage]()
     var phAssets = [PHAsset]()
     var selectedImage: UIImage?
+    var selectedAsset: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +29,10 @@ class AddPhotosViewController: UIViewController {
     
     fileprivate func setupNavigationButtons() {
         
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(handleNext))
-        navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = .mainAppColor
     }
     
     fileprivate func assetsFetchOptions() -> PHFetchOptions{
@@ -79,7 +81,9 @@ class AddPhotosViewController: UIViewController {
     }
     
     @objc func handleNext() {
-        print("Handling next")
+        let sharePhotoController = SharePhotoViewController()
+        sharePhotoController.selectedPhoto = selectedAsset
+        navigationController?.pushViewController(sharePhotoController, animated: true)
     }
     
     @objc func handleCancel() {
@@ -125,7 +129,8 @@ extension AddPhotosViewController:UICollectionViewDataSource,UICollectionViewDel
                 imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil, resultHandler: { [weak self](image, info) in
                     
                     DispatchQueue.main.async{
-                        header.imgPhoto.image = image
+                        self?.selectedAsset = image
+                        header.imgPhoto.image = self?.selectedAsset
                         self?.cvPhotos.setContentOffset(.zero, animated: false)
                     }
                  
