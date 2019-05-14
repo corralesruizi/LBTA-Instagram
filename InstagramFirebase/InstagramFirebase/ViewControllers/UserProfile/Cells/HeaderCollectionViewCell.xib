@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOs-Oa-o6C">
                         <rect key="frame" x="0.0" y="0.0" width="397" height="190"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVv-f0-9bt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TVv-f0-9bt" customClass="InstagramImageView" customModule="InstagramFirebase" customModuleProvider="target">
                                 <rect key="frame" x="12" y="12" width="80" height="80"/>
                                 <color key="backgroundColor" name="disabledMainColor"/>
                                 <constraints>

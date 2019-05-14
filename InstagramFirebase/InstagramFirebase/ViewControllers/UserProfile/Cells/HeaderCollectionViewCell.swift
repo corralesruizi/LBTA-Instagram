@@ -5,8 +5,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     static var cellKey: String = "HeaderCollectionViewCell";
     static var cellNib: UINib = UINib(nibName: HeaderCollectionViewCell.cellKey, bundle: nil)
     
-    
-    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var imgProfile: InstagramImageView!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblPosts: UILabel!
     @IBOutlet weak var lblFollowers: UILabel!
@@ -15,7 +14,9 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     
     var user: User?{
         didSet{
-            setupProfileImage()
+            SetupUI()
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            imgProfile.loadImage(urlString: profileImageUrl)
             lblUserName.text = user?.username
         }
     }
@@ -23,11 +24,6 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-    }
-    
-    func updateHeader()
-    {
-        SetupUI()
     }
     
     fileprivate func SetupUI()
@@ -50,28 +46,4 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         
         return attributedText
     }
-    
-   
-    fileprivate func setupProfileImage() {
-        
-        guard let profileImageUrl = user?.profileImageUrl else { return }
-        guard let url = URL(string: profileImageUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { [weak self](data, response, err) in
-            if let err = err {
-                print("Failed to fetch profile image:", err)
-                return
-            }
-            
-            guard let data = data else { return }
-            let image = UIImage(data: data)
-            
-            DispatchQueue.main.async {
-                self?.imgProfile.image = image
-            }
-            
-            }.resume()
-    }
-    
-    
 }

@@ -9,7 +9,7 @@ class UserProfileViewController: UIViewController {
     var posts = [Post]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("UserProfileViewController viewDidLoad")
         cvUserImages.register(HeaderCollectionViewCell.cellNib,
                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                               withReuseIdentifier: HeaderCollectionViewCell.cellKey)
@@ -20,7 +20,7 @@ class UserProfileViewController: UIViewController {
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
         fetchUser()
-        fetchPosts()
+        fetchOrderedPosts()
         setupLogoutButton()
     }
     
@@ -61,7 +61,10 @@ class UserProfileViewController: UIViewController {
             
             self?.user = User(dictionary: dictionary)
             self?.navigationItem.title = self?.user?.username
-            self?.cvUserImages?.reloadData()
+            
+            if let header = self?.cvUserImages.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section:0)) as? HeaderCollectionViewCell {
+                header.user = self?.user
+            }
             
         }) { (err) in
             print("Failed to fetch user:", err)
@@ -91,6 +94,25 @@ class UserProfileViewController: UIViewController {
         }
 
     }
+    
+    fileprivate func fetchOrderedPosts() {
+        print("fetch ordered post Called")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("posts").child(uid)
+        
+        //perhaps later on we'll implement some pagination of data
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { [weak self](snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let post = Post(dictionary: dictionary)
+            self?.posts.append(post)
+            self?.cvUserImages.reloadData()
+            print("Psot was added")
+            
+        }) { (err) in
+            print("Failed to fetch ordered posts:", err)
+        }
+    }
 }
 
 extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
@@ -110,7 +132,6 @@ extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewD
                         at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind, withReuseIdentifier: HeaderCollectionViewCell.cellKey, for: indexPath) as! HeaderCollectionViewCell
-        header.updateHeader()
         header.user=user
         return header
     }
