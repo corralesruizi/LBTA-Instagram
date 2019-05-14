@@ -15,6 +15,29 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgPhoto: UIImageView!
     
+    var post: Post?{
+        didSet{
+            
+            guard let imageUrl = post?.imageUrl else { return }
+            guard let url = URL(string: imageUrl) else { return }
+            
+            URLSession.shared.dataTask(with: url) { [weak self](data, response, err) in
+                if let err = err {
+                    print("Failed to fetch post image:", err)
+                    return
+                }
+                
+                guard let imageData = data else { return }
+                let photoImage = UIImage(data: imageData)
+                
+                DispatchQueue.main.async {
+                    self?.imgPhoto.image = photoImage
+                }
+                
+                }.resume()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

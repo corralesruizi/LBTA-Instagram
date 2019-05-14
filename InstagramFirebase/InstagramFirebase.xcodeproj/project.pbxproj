@@ -29,6 +29,14 @@
 		8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F93C2289FD1200AC9260 /* AddPhotosHeaderView.xib */; };
 		8B83F943228B13E600AC9260 /* SharePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F941228B13E600AC9260 /* SharePhotoViewController.swift */; };
 		8B83F944228B13E600AC9260 /* SharePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F942228B13E600AC9260 /* SharePhotoViewController.xib */; };
+		8B83F947228B2CF600AC9260 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F946228B2CF600AC9260 /* User.swift */; };
+		8B83F949228B572D00AC9260 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F948228B572D00AC9260 /* Post.swift */; };
+		8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F94D228B5E8A00AC9260 /* SearchViewController.swift */; };
+		8B83F950228B5E8A00AC9260 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F94E228B5E8A00AC9260 /* SearchViewController.xib */; };
+		8B83F953228B5E9500AC9260 /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F951228B5E9500AC9260 /* LikeViewController.swift */; };
+		8B83F954228B5E9500AC9260 /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F952228B5E9500AC9260 /* LikeViewController.xib */; };
+		8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F955228B5EA300AC9260 /* HomeViewController.swift */; };
+		8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F956228B5EA300AC9260 /* HomeViewController.xib */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
 		DC5971A2A725B3B23B2B67E3 /* Pods_InstagramFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +68,14 @@
 		8B83F93C2289FD1200AC9260 /* AddPhotosHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotosHeaderView.xib; sourceTree = "<group>"; };
 		8B83F941228B13E600AC9260 /* SharePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoViewController.swift; sourceTree = "<group>"; };
 		8B83F942228B13E600AC9260 /* SharePhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SharePhotoViewController.xib; sourceTree = "<group>"; };
+		8B83F946228B2CF600AC9260 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8B83F948228B572D00AC9260 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8B83F94D228B5E8A00AC9260 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8B83F94E228B5E8A00AC9260 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		8B83F951228B5E9500AC9260 /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		8B83F952228B5E9500AC9260 /* LikeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
+		8B83F955228B5EA300AC9260 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8B83F956228B5EA300AC9260 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -175,6 +191,7 @@
 		8B7AF7D0227CA1490009BB40 /* InstagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				8B83F945228B2CE200AC9260 /* Models */,
 				8B50B4832285BFFF0015B77A /* Utils */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
 				8B795F6C2280D3A20073CA66 /* Presenter */,
@@ -192,6 +209,9 @@
 		8B7AF7E3227CA3420009BB40 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B83F94C228B5E7700AC9260 /* Home */,
+				8B83F94B228B5E6A00AC9260 /* Like */,
+				8B83F94A228B5E6000AC9260 /* Search */,
 				8B83F940228B13C500AC9260 /* SharePhoto */,
 				8B83F9352289FBAA00AC9260 /* AddPhotos */,
 				8B50B47E2284B9A50015B77A /* Login */,
@@ -228,6 +248,42 @@
 				8B83F942228B13E600AC9260 /* SharePhotoViewController.xib */,
 			);
 			path = SharePhoto;
+			sourceTree = "<group>";
+		};
+		8B83F945228B2CE200AC9260 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F946228B2CF600AC9260 /* User.swift */,
+				8B83F948228B572D00AC9260 /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B83F94A228B5E6000AC9260 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F94D228B5E8A00AC9260 /* SearchViewController.swift */,
+				8B83F94E228B5E8A00AC9260 /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8B83F94B228B5E6A00AC9260 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F951228B5E9500AC9260 /* LikeViewController.swift */,
+				8B83F952228B5E9500AC9260 /* LikeViewController.xib */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		8B83F94C228B5E7700AC9260 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F955228B5EA300AC9260 /* HomeViewController.swift */,
+				8B83F956228B5EA300AC9260 /* HomeViewController.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		8BC210822280D47A00FBD0E1 /* Protocols */ = {
@@ -307,8 +363,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B50B4822284BFE20015B77A /* LoginViewController.xib in Resources */,
+				8B83F954228B5E9500AC9260 /* LikeViewController.xib in Resources */,
 				8B4760BD2281C08B001AE0AD /* UserProfileViewController.xib in Resources */,
+				8B83F950228B5E8A00AC9260 /* SearchViewController.xib in Resources */,
 				8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */,
+				8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */,
 				8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */,
 				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
 				8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */,
@@ -380,10 +439,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
+				8B83F947228B2CF600AC9260 /* User.swift in Sources */,
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
+				8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8B795F6B228094280073CA66 /* Colors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
+				8B83F949228B572D00AC9260 /* Post.swift in Sources */,
+				8B83F953228B5E9500AC9260 /* LikeViewController.swift in Sources */,
 				8B4760C62281D4DD001AE0AD /* HeaderCollectionViewCell.swift in Sources */,
 				8B50B4812284BFE20015B77A /* LoginViewController.swift in Sources */,
 				8B83F9382289FC1700AC9260 /* AddPhotosViewController.swift in Sources */,

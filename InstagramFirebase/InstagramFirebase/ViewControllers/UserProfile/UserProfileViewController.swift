@@ -5,11 +5,8 @@ import Foundation
 class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var cvUserImages: UICollectionView!
-    
-    deinit {
-        print("Profile Gone")
-    }
-    
+    var user: User?
+    var posts = [Post]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +20,7 @@ class UserProfileViewController: UIViewController {
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
         fetchUser()
+        fetchPosts()
         setupLogoutButton()
     }
     
@@ -56,28 +54,56 @@ class UserProfileViewController: UIViewController {
     fileprivate func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Database.database().reference().child("users").child(uid)
-            .observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            print(snapshot.value ?? "")
             
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
-            let username = dictionary["username"] as? String
-            self.navigationItem.title = username
+            self?.user = User(dictionary: dictionary)
+            self?.navigationItem.title = self?.user?.username
+            self?.cvUserImages?.reloadData()
             
         }) { (err) in
             print("Failed to fetch user:", err)
         }
     }
+    
+    fileprivate func fetchPosts(){
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        ref.observeSingleEvent(of: .value, with: { [weak self](snapshot) in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            dictionaries.forEach({ (key, value) in
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                
+                let post = Post(dictionary: dictionary)
+                self?.posts.append(post)
+            })
+            
+            self?.cvUserImages?.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch posts:", err)
+        }
+
+    }
 }
+
 extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20;
+        return posts.count;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.cellKey, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.cellKey, for: indexPath) as! ImageCollectionViewCell
+            cell.post = posts[indexPath.item]
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
@@ -85,6 +111,7 @@ extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewD
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind, withReuseIdentifier: HeaderCollectionViewCell.cellKey, for: indexPath) as! HeaderCollectionViewCell
         header.updateHeader()
+        header.user=user
         return header
     }
     
