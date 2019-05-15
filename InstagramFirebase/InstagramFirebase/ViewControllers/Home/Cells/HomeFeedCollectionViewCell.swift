@@ -11,11 +11,17 @@ import UIKit
 class HomeFeedCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgPhoto: InstagramImageView!
+    @IBOutlet weak var lblUser: UILabel!
     
     var post: Post? {
         didSet {
+            
             guard let postImageUrl = post?.imageUrl else { return }
+            guard let username = post?.user.username else { return }
+            guard let caption = post?.caption else { return }
+            
             imgPhoto.loadImage(urlString: postImageUrl)
+            lblUser.text = username+caption
         }
     }
     

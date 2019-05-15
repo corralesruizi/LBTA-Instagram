@@ -177,6 +177,7 @@ ArelyLeeb </string>
             <size key="customSize" width="374" height="626"/>
             <connections>
                 <outlet property="imgPhoto" destination="hAH-fU-7IS" id="aDa-q0-zer"/>
+                <outlet property="lblUser" destination="QRN-aq-dPL" id="3tR-a6-AbV"/>
             </connections>
             <point key="canvasLocation" x="372.46376811594206" y="136.60714285714286"/>
         </collectionViewCell>

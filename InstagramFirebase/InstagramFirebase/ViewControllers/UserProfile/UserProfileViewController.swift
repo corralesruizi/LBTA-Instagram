@@ -12,22 +12,33 @@ class UserProfileViewController: UIViewController {
     let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
     var user: User?
     var posts = [Post]()
+    var dbRef: DatabaseReference?
+    var fbObserverRef: UInt?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("UserProfileViewController viewDidLoad")
+        dbRef = Database.database().reference()
         cvUserImages.register(headerNib,
                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                               withReuseIdentifier: headerId)
         
         cvUserImages.register(cellNib,forCellWithReuseIdentifier: cellId)
-        
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
+        
         fetchUser()
-        fetchPosts()
-        //fetchOrderedPosts()
         setupLogoutButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchOrderedPosts()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let observer = fbObserverRef else {return}
+        dbRef?.removeObserver(withHandle: observer)
     }
     
     fileprivate func setupLogoutButton()
@@ -59,60 +70,26 @@ class UserProfileViewController: UIViewController {
     
     fileprivate func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
-            print(snapshot.value ?? "")
-            
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            
-            self?.user = User(dictionary: dictionary)
+        Database.fetchUserWithUID(uid: uid) {[weak self] (user) in
+            self?.user = user
             self?.navigationItem.title = self?.user?.username
-            
-            if let header = self?.cvUserImages.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section:0)) as? HeaderCollectionViewCell {
-                header.user = self?.user
-            }
-            
-        }) { (err) in
-            print("Failed to fetch user:", err)
-        }
-    }
-    
-    fileprivate func fetchPosts(){
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let ref = Database.database().reference().child("posts").child(uid)
-        ref.observeSingleEvent(of: .value, with: { [weak self](snapshot) in
-            
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            
-            dictionaries.forEach({ (key, value) in
-                
-                guard let dictionary = value as? [String: Any] else { return }
-                
-                let post = Post(dictionary: dictionary)
-                self?.posts.append(post)
-            })
-            
             self?.cvUserImages?.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch posts:", err)
         }
-
     }
     
     fileprivate func fetchOrderedPosts() {
-        print("fetch ordered post Called")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
-        //perhaps later on we'll implement some pagination of data
-        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { [weak self](snapshot) in
+        
+        self.posts.removeAll()
+        fbObserverRef = ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { [weak self](snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
+            guard let user = self?.user else { return }
             
-            let post = Post(dictionary: dictionary)
-            self?.posts.append(post)
-            self?.cvUserImages.reloadData()
-            print("Psot was added")
+            let post = Post(user: user, dictionary: dictionary)
+            
+            self?.posts.insert(post, at: 0)
+            self?.cvUserImages?.reloadData()
             
         }) { (err) in
             print("Failed to fetch ordered posts:", err)

@@ -14,7 +14,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchPosts()
+    }
+    
+    fileprivate func setupNavigationItems() {
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
     }
     
     fileprivate func setupCollectionView()
@@ -24,28 +32,36 @@ class HomeViewController: UIViewController {
         cvPosts.delegate = self
     }
     
-    fileprivate func fetchPosts(){
-        
+    fileprivate func fetchPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = Database.database().reference().child("posts").child(uid)
-        ref.observeSingleEvent(of: .value, with: { [weak self](snapshot) in
-            
+        Database.fetchUserWithUID(uid: uid) { [weak self](user) in
+            self?.fetchPostsWithUser(user: user)
+        }
+    }
+    
+    fileprivate func fetchPostsWithUser(user: User) {
+        let ref = Database.database().reference().child("posts").child(user.uid)
+        posts.removeAll()
+        ref.queryOrdered(byChild: "caption").observeSingleEvent(of: .value, with: { [weak self](snapshot) in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
             dictionaries.forEach({ (key, value) in
-                
                 guard let dictionary = value as? [String: Any] else { return }
                 
-                let post = Post(dictionary: dictionary)
+                let post = Post(user: user, dictionary: dictionary)
                 self?.posts.append(post)
             })
             
-            self?.cvPosts?.reloadData()
+            self?.posts.sort(by: { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+            })
+            
+            self?.cvPosts.reloadData()
             
         }) { (err) in
             print("Failed to fetch posts:", err)
         }
     }
-
 }
 
 extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
