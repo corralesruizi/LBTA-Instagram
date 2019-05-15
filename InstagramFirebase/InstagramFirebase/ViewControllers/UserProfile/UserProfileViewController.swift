@@ -25,7 +25,8 @@ class UserProfileViewController: UIViewController {
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
         fetchUser()
-        fetchOrderedPosts()
+        fetchPosts()
+        //fetchOrderedPosts()
         setupLogoutButton()
     }
     

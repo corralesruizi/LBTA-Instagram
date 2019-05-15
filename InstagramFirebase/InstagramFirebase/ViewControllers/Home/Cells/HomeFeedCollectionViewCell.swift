@@ -24,5 +24,23 @@ class HomeFeedCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    @IBAction func btnMore(_ sender: UIButton) {
+        print("More")
+    }
+    
+    @IBAction func btnLike(_ sender: UIButton) {
+        print("Like")
+    }
+    
+    @IBAction func btnMessage(_ sender: UIButton) {
+        print("Message")
+    }
+    
+    @IBAction func bttnSend(_ sender: UIButton) {
+        print("Send")
+    }
+    @IBAction func btnRibbon(_ sender: UIButton) {
+        print("Ribbon")
+    }
 }
