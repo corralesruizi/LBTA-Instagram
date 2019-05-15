@@ -63,8 +63,6 @@ extension MainTabBarController : UITabBarControllerDelegate
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {
         
-        print("index")
-        
         let index = viewControllers?.firstIndex(of: viewController)
         if index == 2 {
             

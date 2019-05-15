@@ -2,9 +2,6 @@ import UIKit
 
 class HeaderCollectionViewCell: UICollectionViewCell {
 
-    static var cellKey: String = "HeaderCollectionViewCell";
-    static var cellNib: UINib = UINib(nibName: HeaderCollectionViewCell.cellKey, bundle: nil)
-    
     @IBOutlet weak var imgProfile: InstagramImageView!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblPosts: UILabel!

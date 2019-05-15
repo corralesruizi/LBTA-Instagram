@@ -37,7 +37,9 @@
 		8B83F954228B5E9500AC9260 /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F952228B5E9500AC9260 /* LikeViewController.xib */; };
 		8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F955228B5EA300AC9260 /* HomeViewController.swift */; };
 		8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F956228B5EA300AC9260 /* HomeViewController.xib */; };
-		8B83F95A228B64F900AC9260 /* IntagramImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F959228B64F900AC9260 /* IntagramImageView.swift */; };
+		8B83F95A228B64F900AC9260 /* InstagramImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F959228B64F900AC9260 /* InstagramImageView.swift */; };
+		8B83F95E228B98E500AC9260 /* HomeFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */; };
+		8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
 		DC5971A2A725B3B23B2B67E3 /* Pods_InstagramFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */; };
 /* End PBXBuildFile section */
@@ -77,7 +79,9 @@
 		8B83F952228B5E9500AC9260 /* LikeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
 		8B83F955228B5EA300AC9260 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8B83F956228B5EA300AC9260 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		8B83F959228B64F900AC9260 /* IntagramImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntagramImageView.swift; sourceTree = "<group>"; };
+		8B83F959228B64F900AC9260 /* InstagramImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramImageView.swift; sourceTree = "<group>"; };
+		8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -153,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				8B50B4842285C05D0015B77A /* AlertView.swift */,
-				8B83F959228B64F900AC9260 /* IntagramImageView.swift */,
+				8B83F959228B64F900AC9260 /* InstagramImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,10 +287,20 @@
 		8B83F94C228B5E7700AC9260 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8B83F95B228B984C00AC9260 /* Cells */,
 				8B83F955228B5EA300AC9260 /* HomeViewController.swift */,
 				8B83F956228B5EA300AC9260 /* HomeViewController.xib */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8B83F95B228B984C00AC9260 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */,
+				8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		8BC210822280D47A00FBD0E1 /* Protocols */ = {
@@ -373,6 +387,7 @@
 				8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */,
 				8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */,
 				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
+				8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */,
 				8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */,
 				8B83F944228B13E600AC9260 /* SharePhotoViewController.xib in Resources */,
 				8B4760C72281D4DD001AE0AD /* HeaderCollectionViewCell.xib in Resources */,
@@ -445,7 +460,7 @@
 				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
 				8B83F947228B2CF600AC9260 /* User.swift in Sources */,
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
-				8B83F95A228B64F900AC9260 /* IntagramImageView.swift in Sources */,
+				8B83F95A228B64F900AC9260 /* InstagramImageView.swift in Sources */,
 				8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8B795F6B228094280073CA66 /* Colors.swift in Sources */,
@@ -456,6 +471,7 @@
 				8B50B4812284BFE20015B77A /* LoginViewController.swift in Sources */,
 				8B83F9382289FC1700AC9260 /* AddPhotosViewController.swift in Sources */,
 				8B4760B82281BFAB001AE0AD /* MainTabBarViewController.swift in Sources */,
+				8B83F95E228B98E500AC9260 /* HomeFeedCollectionViewCell.swift in Sources */,
 				8B7AF7E6227CA46F0009BB40 /* SignUpViewController.swift in Sources */,
 				8B83F943228B13E600AC9260 /* SharePhotoViewController.swift in Sources */,
 				8B50B4852285C05D0015B77A /* AlertView.swift in Sources */,

@@ -1,8 +1,17 @@
 import  UIKit
 
+var imageCache = [String: UIImage]()
+
 class InstagramImageView: UIImageView {
     
+    var currentImage:UIImage?
+    
     func loadImage(urlString: String){
+        
+        if let cachedImage = imageCache[urlString] {
+            self.image = cachedImage
+            return
+        }
         
         guard let url = URL(string: urlString) else { return }
         
@@ -13,10 +22,13 @@ class InstagramImageView: UIImageView {
             }
             
             guard let imageData = data else { return }
-            let photoImage = UIImage(data: imageData)
+            self?.currentImage = UIImage(data: imageData)
+            
+            imageCache[url.absoluteString] = self?.currentImage
+            
             
             DispatchQueue.main.async {
-                self?.image = photoImage
+                self?.image = self?.currentImage
             }
             
             }.resume()

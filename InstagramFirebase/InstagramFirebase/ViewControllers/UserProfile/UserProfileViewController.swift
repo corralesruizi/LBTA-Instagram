@@ -5,17 +5,22 @@ import Foundation
 class UserProfileViewController: UIViewController {
 
     @IBOutlet weak var cvUserImages: UICollectionView!
+    
+    let cellId="cellId"
+    let headerId="headerId"
+    let headerNib = UINib(nibName: "HeaderCollectionViewCell", bundle: nil)
+    let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
     var user: User?
     var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("UserProfileViewController viewDidLoad")
-        cvUserImages.register(HeaderCollectionViewCell.cellNib,
+        cvUserImages.register(headerNib,
                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                              withReuseIdentifier: HeaderCollectionViewCell.cellKey)
+                              withReuseIdentifier: headerId)
         
-        cvUserImages.register(ImageCollectionViewCell.cellNib,
-                              forCellWithReuseIdentifier: ImageCollectionViewCell.cellKey)
+        cvUserImages.register(cellNib,forCellWithReuseIdentifier: cellId)
         
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
@@ -99,7 +104,6 @@ class UserProfileViewController: UIViewController {
         print("fetch ordered post Called")
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
-        
         //perhaps later on we'll implement some pagination of data
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { [weak self](snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
@@ -123,7 +127,7 @@ extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.cellKey, for: indexPath) as! ImageCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ImageCollectionViewCell
             cell.post = posts[indexPath.item]
         return cell
     }
@@ -131,7 +135,7 @@ extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind, withReuseIdentifier: HeaderCollectionViewCell.cellKey, for: indexPath) as! HeaderCollectionViewCell
+            ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCollectionViewCell
         header.user=user
         return header
     }

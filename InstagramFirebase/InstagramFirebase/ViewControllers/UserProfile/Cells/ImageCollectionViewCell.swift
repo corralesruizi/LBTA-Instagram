@@ -9,9 +9,6 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
-
-    static var cellKey: String = "ImageCollectionViewCell";
-    static var cellNib: UINib = UINib(nibName: ImageCollectionViewCell.cellKey, bundle: nil)
     
     @IBOutlet weak var imgPhoto: InstagramImageView!
     

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="InstagramFirebase" customModuleProvider="target">
             <connections>
+                <outlet property="cvPosts" destination="Nce-OY-pg3" id="7dw-go-djU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,16 +21,29 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homefeedsample" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-oi-6WG">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Nce-OY-pg3">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bTr-UM-eBg">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homefeedsample" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-oi-6WG">
+                    <rect key="frame" x="0.0" y="44" width="414" height="585.5"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="b1R-oi-6WG" secondAttribute="bottom" id="OWc-2w-95q"/>
+                <constraint firstItem="Nce-OY-pg3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4S2-2A-aeB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nce-OY-pg3" secondAttribute="bottom" id="6F9-X1-iLp"/>
                 <constraint firstItem="b1R-oi-6WG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ry9-la-3gu"/>
+                <constraint firstItem="Nce-OY-pg3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X3B-ki-D9y"/>
                 <constraint firstItem="b1R-oi-6WG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lDr-J5-nsg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b1R-oi-6WG" secondAttribute="trailing" id="sqi-rE-ubf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nce-OY-pg3" secondAttribute="trailing" id="uQ9-km-anH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

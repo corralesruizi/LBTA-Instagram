@@ -8,6 +8,11 @@ class SharePhotoViewController: UIViewController {
     
     var selectedPhoto: UIImage?
     
+    
+    deinit {
+        print("Gone")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,15 +46,15 @@ class SharePhotoViewController: UIViewController {
         
         let values = ["imageUrl": imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String : Any]
         
-        ref.updateChildValues(values) { (err, ref) in
+        ref.updateChildValues(values) { [weak self] (err, ref) in
             if let err = err {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
                 print("Failed to save post to DB", err)
                 return
             }
             
             print("Successfully saved post to DB")
-            self.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
     }
     
