@@ -10,19 +10,22 @@ class HomeViewController: UIViewController {
     
     var posts = [Post]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupCollectionView()
+    deinit {
+        print("HomeViewController Gone")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationItems()
+        setupCollectionView()
         fetchPosts()
     }
     
     fileprivate func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cameraIcon"), style: .plain, target: self, action: nil)
     }
     
     fileprivate func setupCollectionView()
@@ -40,26 +43,10 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
-        let ref = Database.database().reference().child("posts").child(user.uid)
-        posts.removeAll()
-        ref.queryOrdered(byChild: "caption").observeSingleEvent(of: .value, with: { [weak self](snapshot) in
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            
-            dictionaries.forEach({ (key, value) in
-                guard let dictionary = value as? [String: Any] else { return }
-                
-                let post = Post(user: user, dictionary: dictionary)
-                self?.posts.append(post)
-            })
-            
-            self?.posts.sort(by: { (p1, p2) -> Bool in
-                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-            })
-            
+        
+        Database.fetchPostsWithUser(user: user) { [weak self](postsFromUser) in
+            self?.posts = postsFromUser
             self?.cvPosts.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch posts:", err)
         }
     }
 }
@@ -91,8 +78,9 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let dimen = UIScreen.main.bounds.width
-        return CGSize(width: dimen,height: 626)
+        let width = UIScreen.main.bounds.width
+        let height = 56 + width + 44 + 74
+        return CGSize(width: width,height: height)
     }
 }
 

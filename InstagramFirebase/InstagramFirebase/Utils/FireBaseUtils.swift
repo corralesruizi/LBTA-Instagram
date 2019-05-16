@@ -1,11 +1,3 @@
-//
-//  FireBaseUtils.swift
-//  InstagramFirebase
-//
-//  Created by Developer on 5/15/19.
-//  Copyright © 2019 Developer. All rights reserved.
-//
-
 import Foundation
 import Firebase
 extension Database {
@@ -19,6 +11,28 @@ extension Database {
             
         }) { (err) in
             print("Failed to fetch user for posts:", err)
+        }
+    }
+    
+    static func fetchPostsWithUser(user: User,completion: @escaping ([Post])->()) {
+        
+        var posts = [Post]()
+        let ref = Database.database().reference().child("posts").child(user.uid)
+        ref.observeSingleEvent(of: .value, with: {(snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach({ (key, value) in
+                guard let dictionary = value as? [String: Any] else { return }
+                let post = Post(user: user, dictionary: dictionary)
+                posts.append(post)
+            })
+            
+            posts.sort(by: { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending })
+            
+            completion(posts)
+            
+        }) { (err) in
+            print("Failed to fetch posts:", err)
         }
     }
 }

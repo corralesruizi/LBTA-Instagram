@@ -42,6 +42,10 @@
 		8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */; };
 		8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
+		8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */; };
+		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
+		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
+		8BF8E6EB228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E9228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib */; };
 		DC5971A2A725B3B23B2B67E3 /* Pods_InstagramFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +89,10 @@
 		8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseUtils.swift; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
+		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BF8E6E9228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		C550BDAB862575E33D851800 /* Pods_InstagramFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,6 +169,8 @@
 				8B50B4842285C05D0015B77A /* AlertView.swift */,
 				8B83F959228B64F900AC9260 /* InstagramImageView.swift */,
 				8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */,
+				8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */,
+				8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -272,6 +282,7 @@
 		8B83F94A228B5E6000AC9260 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8E6EC228CCE66008CEDD5 /* Cells */,
 				8B83F94D228B5E8A00AC9260 /* SearchViewController.swift */,
 				8B83F94E228B5E8A00AC9260 /* SearchViewController.xib */,
 			);
@@ -311,6 +322,15 @@
 			children = (
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8BF8E6EC228CCE66008CEDD5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */,
+				8BF8E6E9228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		DD0BEC9FB33CF45238F870CF /* Pods */ = {
@@ -392,6 +412,7 @@
 				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
 				8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */,
 				8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */,
+				8BF8E6EB228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib in Resources */,
 				8B83F944228B13E600AC9260 /* SharePhotoViewController.xib in Resources */,
 				8B4760C72281D4DD001AE0AD /* HeaderCollectionViewCell.xib in Resources */,
 				8B4760C32281D4AE001AE0AD /* ImageCollectionViewCell.xib in Resources */,
@@ -463,7 +484,10 @@
 				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
 				8B83F947228B2CF600AC9260 /* User.swift in Sources */,
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
+				8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */,
 				8B83F95A228B64F900AC9260 /* InstagramImageView.swift in Sources */,
+				8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */,
+				8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */,
 				8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */,
 				8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
@@ -622,6 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;
 				INFOPLIST_FILE = InstagramFirebase/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -643,6 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9NNB947EN;
 				INFOPLIST_FILE = InstagramFirebase/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

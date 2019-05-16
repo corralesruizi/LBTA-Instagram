@@ -12,16 +12,17 @@ class HomeFeedCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imgPhoto: InstagramImageView!
     @IBOutlet weak var lblUser: UILabel!
+    @IBOutlet weak var imgUser: InstagramImageView!
     
     var post: Post? {
         didSet {
-            
+            guard let user = post?.user else { return }
             guard let postImageUrl = post?.imageUrl else { return }
-            guard let username = post?.user.username else { return }
-            guard let caption = post?.caption else { return }
             
+            lblUser.text = user.username
+            imgUser.layer.cornerRadius=20
+            imgUser.loadImage(urlString: user.profileImageUrl)
             imgPhoto.loadImage(urlString: postImageUrl)
-            lblUser.text = username+caption
         }
     }
     

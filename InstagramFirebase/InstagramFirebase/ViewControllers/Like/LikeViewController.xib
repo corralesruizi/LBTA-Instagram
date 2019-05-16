@@ -19,21 +19,8 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="likesample" translatesAutoresizingMaskIntoConstraints="NO" id="o5o-98-ICj">
-                    <rect key="frame" x="0.0" y="20" width="375" height="556"/>
-                </imageView>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="o5o-98-ICj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6zt-eZ-dJG"/>
-                <constraint firstItem="o5o-98-ICj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BAU-hN-Gcu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o5o-98-ICj" secondAttribute="trailing" id="bbf-bX-kD4"/>
-            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
-    <resources>
-        <image name="likesample" width="375" height="556"/>
-    </resources>
 </document>

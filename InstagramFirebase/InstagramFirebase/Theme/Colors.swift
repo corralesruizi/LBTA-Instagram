@@ -13,5 +13,5 @@ extension UIColor
 {
     static let mainAppColor:UIColor = UIColor(named: "mainAppColor") ?? UIColor.white
     static let lightMainAppColor:UIColor = UIColor(named: "mainLightAppColor") ?? UIColor.white
-    
+    static let searchBgAppColor:UIColor = UIColor(named: "searchBackground") ?? UIColor.white
 }

@@ -22,14 +22,14 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSc-a7-ztr">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yRw-YU-sJC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yRw-YU-sJC" customClass="InstagramImageView" customModule="InstagramFirebase" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="N1L-aG-TWT"/>
                                     <constraint firstAttribute="width" constant="40" id="xxI-px-1pa"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-y4-LpL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8E-y4-LpL">
                                 <rect key="frame" x="330" y="6" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="0iR-Og-yK6"/>
@@ -69,7 +69,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IXV-S6-dTX">
                         <rect key="frame" x="0.0" y="430" width="132" height="44"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzf-tO-K1i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzf-tO-K1i">
                                 <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="aHz-Hf-N7S"/>
@@ -79,7 +79,7 @@
                                     <action selector="btnLike:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ysf-Fn-GxK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQm-Y7-uH6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQm-Y7-uH6">
                                 <rect key="frame" x="44" y="0.0" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="gMQ-eY-WmW"/>
@@ -89,7 +89,7 @@
                                     <action selector="btnMessage:" destination="gTV-IL-0wX" eventType="touchUpInside" id="I3F-jp-vfl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-6V-CxF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pG0-6V-CxF">
                                 <rect key="frame" x="88" y="0.0" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="SCG-8w-5tg"/>
@@ -104,7 +104,7 @@
                             <constraint firstAttribute="height" constant="44" id="f9T-TX-mz6"/>
                         </constraints>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlO-Mn-9aD">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlO-Mn-9aD">
                         <rect key="frame" x="330" y="430" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="OAF-zH-bRK"/>
@@ -177,6 +177,7 @@ ArelyLeeb </string>
             <size key="customSize" width="374" height="626"/>
             <connections>
                 <outlet property="imgPhoto" destination="hAH-fU-7IS" id="aDa-q0-zer"/>
+                <outlet property="imgUser" destination="yRw-YU-sJC" id="gBK-Go-d1s"/>
                 <outlet property="lblUser" destination="QRN-aq-dPL" id="3tR-a6-AbV"/>
             </connections>
             <point key="canvasLocation" x="372.46376811594206" y="136.60714285714286"/>

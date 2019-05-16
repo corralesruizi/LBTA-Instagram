@@ -2,14 +2,12 @@ import  UIKit
 
 class InstagramImageView: UIImageView {
     
-    static let imageCache = NSCache<AnyObject, AnyObject>()
-    var currentImage:UIImage?
-    
+    fileprivate var currentImage:UIImage?
     func loadImage(urlString: String){
         
         self.image=nil
         
-        if let imageFromCache = InstagramImageView.imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+        if let imageFromCache = NSImageCache.shared.imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             self.image = imageFromCache
             return
         }
@@ -25,7 +23,7 @@ class InstagramImageView: UIImageView {
             self?.currentImage = UIImage(data: imageData)
             
             guard let currentImage = self?.currentImage else {return}
-            InstagramImageView.imageCache.setObject(currentImage, forKey: url.absoluteString as AnyObject)
+            NSImageCache.shared.imageCache.setObject(currentImage, forKey: url.absoluteString as AnyObject)
             
             DispatchQueue.main.async {
                 self?.image = self?.currentImage

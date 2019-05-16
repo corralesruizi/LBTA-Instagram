@@ -14,6 +14,11 @@ class UserProfileViewController: UIViewController {
     var posts = [Post]()
     var dbRef: DatabaseReference?
     var fbObserverRef: UInt?
+    var userId: String?
+    
+    deinit {
+        print("UserProfileViewController Gone")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +74,8 @@ class UserProfileViewController: UIViewController {
     }
     
     fileprivate func fetchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
+        
         Database.fetchUserWithUID(uid: uid) {[weak self] (user) in
             self?.user = user
             self?.navigationItem.title = self?.user?.username
@@ -78,7 +84,7 @@ class UserProfileViewController: UIViewController {
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
         self.posts.removeAll()
@@ -90,6 +96,7 @@ class UserProfileViewController: UIViewController {
             
             self?.posts.insert(post, at: 0)
             self?.cvUserImages?.reloadData()
+            print("userProfile images reloaded")
             
         }) { (err) in
             print("Failed to fetch ordered posts:", err)
