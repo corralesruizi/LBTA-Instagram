@@ -75,16 +75,20 @@ class UserProfileViewController: UIViewController {
     
     fileprivate func fetchUser() {
         let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
+        print("fetching user:\(uid)")
         
         Database.fetchUserWithUID(uid: uid) {[weak self] (user) in
             self?.user = user
             self?.navigationItem.title = self?.user?.username
             self?.cvUserImages?.reloadData()
+            print("fetched user:\(uid)")
         }
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = self.user?.uid else { return }
+        print("fetchin posts")
+        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
+        print("fetching posts for user:\(uid)")
         let ref = Database.database().reference().child("posts").child(uid)
         
         self.posts.removeAll()

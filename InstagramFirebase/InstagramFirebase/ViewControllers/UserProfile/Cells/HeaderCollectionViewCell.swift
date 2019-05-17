@@ -43,4 +43,21 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         
         return attributedText
     }
+    
+    fileprivate func setupFollowStyle()
+    {
+        btnEdit.setTitle("Follow", for: .normal)
+        btnEdit.backgroundColor = .mainAppColor
+        btnEdit.setTitleColor(.white, for: .normal)
+        btnEdit.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+        btnEdit.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+    }
+    
+    fileprivate func setupUnfollowStyle()
+    {
+        btnEdit.setTitle("Unfollow", for: .normal)
+        btnEdit.backgroundColor = .white
+        btnEdit.setTitleColor(.black, for: .normal)
+        btnEdit.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+    }
 }
