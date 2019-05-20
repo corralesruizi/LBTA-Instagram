@@ -3,7 +3,11 @@ import  UIKit
 class InstagramImageView: UIImageView {
     
     fileprivate var currentImage:UIImage?
+    
+    var lastURLUsedToLoadImage: String?
     func loadImage(urlString: String){
+        
+        lastURLUsedToLoadImage = urlString
         
         self.image=nil
         
@@ -16,6 +20,10 @@ class InstagramImageView: UIImageView {
         URLSession.shared.dataTask(with: url) { [weak self](data, response, err) in
             if let err = err {
                 print("Failed to fetch post image:", err)
+                return
+            }
+            
+            if url.absoluteString != self?.lastURLUsedToLoadImage {
                 return
             }
             

@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,UIScrollViewDelegate {
 
     @IBOutlet weak var cvPosts: UICollectionView!
     
@@ -16,12 +16,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigationItems()
         setupCollectionView()
         fetchPosts()
     }
-    
+
     fileprivate func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
@@ -51,8 +50,8 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
-{
+extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count;
     }

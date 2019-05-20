@@ -10,19 +10,14 @@ class UserProfileViewController: UIViewController {
     let headerId="headerId"
     let headerNib = UINib(nibName: "HeaderCollectionViewCell", bundle: nil)
     let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
+    
     var user: User?
     var posts = [Post]()
-    var dbRef: DatabaseReference?
-    var fbObserverRef: UInt?
     var userId: String?
-    
-    deinit {
-        print("UserProfileViewController Gone")
-    }
+    var isFinishedPaging = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dbRef = Database.database().reference()
         cvUserImages.register(headerNib,
                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                               withReuseIdentifier: headerId)
@@ -30,20 +25,8 @@ class UserProfileViewController: UIViewController {
         cvUserImages.register(cellNib,forCellWithReuseIdentifier: cellId)
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
-        
-        fetchUser()
         setupLogoutButton()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchOrderedPosts()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        guard let observer = fbObserverRef else {return}
-        dbRef?.removeObserver(withHandle: observer)
+        fetchUser()
     }
     
     fileprivate func setupLogoutButton()
@@ -51,10 +34,9 @@ class UserProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(LogoutHandle))
     }
     
-    @objc func LogoutHandle()
-    {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    @objc func LogoutHandle(){
         
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] (_) in
             
             do {
@@ -74,55 +56,77 @@ class UserProfileViewController: UIViewController {
     }
     
     fileprivate func fetchUser() {
+        
         let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
-        print("fetching user:\(uid)")
         
         Database.fetchUserWithUID(uid: uid) {[weak self] (user) in
             self?.user = user
             self?.navigationItem.title = self?.user?.username
-            self?.cvUserImages?.reloadData()
-            print("fetched user:\(uid)")
+            self?.paginatePosts()
         }
     }
     
-    fileprivate func fetchOrderedPosts() {
-        print("fetchin posts")
-        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "")
-        print("fetching posts for user:\(uid)")
-        let ref = Database.database().reference().child("posts").child(uid)
+    fileprivate func paginatePosts()
+    {
+        guard let user = self.user else { return }
         
-        self.posts.removeAll()
-        fbObserverRef = ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { [weak self](snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else { return }
-            guard let user = self?.user else { return }
+        let ref = Database.database().reference().child("posts").child(user.uid)
+        var query = ref.queryOrdered(byChild: "creationDate")
+        
+        if posts.count > 0 {
+            let value = posts.last?.creationDate.timeIntervalSince1970
+            query = query.queryEnding(atValue: value)
+        }
+        
+        query.queryLimited(toLast: 4).observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
             
-            let post = Post(user: user, dictionary: dictionary)
+            guard var allObjects = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            allObjects.reverse()
             
-            self?.posts.insert(post, at: 0)
+            if allObjects.count < 4 {
+                self?.isFinishedPaging = true
+            }
+            
+            if self?.posts.count ?? 0 > 0 && allObjects.count > 0 {
+                allObjects.removeFirst()
+            }
+            
+            allObjects.forEach({ (snapshot) in
+                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                var post = Post(user: user, dictionary: dictionary)
+                post.id = snapshot.key
+                self?.posts.append(post)
+            })
+            
             self?.cvUserImages?.reloadData()
-            print("userProfile images reloaded")
             
-        }) { (err) in
-            print("Failed to fetch ordered posts:", err)
+        }){ (err) in
+            print("Failed to paginate for posts:", err)
         }
     }
 }
 
 extension UserProfileViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
+            if indexPath.item == self.posts.count - 1 && !isFinishedPaging {
+                paginatePosts()
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ImageCollectionViewCell
             cell.post = posts[indexPath.item]
+            
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! HeaderCollectionViewCell
         header.user=user
