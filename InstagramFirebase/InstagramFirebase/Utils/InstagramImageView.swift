@@ -3,8 +3,8 @@ import  UIKit
 class InstagramImageView: UIImageView {
     
     fileprivate var currentImage:UIImage?
+    fileprivate  var lastURLUsedToLoadImage: String?
     
-    var lastURLUsedToLoadImage: String?
     func loadImage(urlString: String){
         
         lastURLUsedToLoadImage = urlString
