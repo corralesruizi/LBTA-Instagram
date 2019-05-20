@@ -15,10 +15,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
     var post: Post?{
         didSet{
             guard let imageUrl = post?.imageUrl else { return }
-            guard let id = post?.id else { return }
-            print(id)
-            print(imageUrl)
-            
             imgPhoto.loadImage(urlString: imageUrl)
         }
     }
