@@ -26,6 +26,11 @@ class UserProfileViewController: UIViewController {
         cvUserImages.dataSource = self
         cvUserImages.delegate = self
         setupLogoutButton()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchUser()
     }
     
@@ -62,6 +67,7 @@ class UserProfileViewController: UIViewController {
         Database.fetchUserWithUID(uid: uid) {[weak self] (user) in
             self?.user = user
             self?.navigationItem.title = self?.user?.username
+            self?.cvUserImages.reloadData()
             self?.paginatePosts()
         }
     }

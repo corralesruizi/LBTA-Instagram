@@ -94,6 +94,11 @@ class HeaderCollectionViewCell: UICollectionViewCell {
         guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
         guard let userId = user?.uid else { return }
         
+        if currentLoggedInUserId == userId{
+            print("Editing profile")
+            return
+        }
+        
         if btnEdit.titleLabel?.text == "Unfollow" {
             //unfollowing
             Database.database().reference().child("following").child(currentLoggedInUserId).child(userId)

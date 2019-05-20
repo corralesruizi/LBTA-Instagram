@@ -41,6 +41,9 @@
 		8B83F95E228B98E500AC9260 /* HomeFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */; };
 		8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */; };
 		8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */; };
+		8B88F44D22934522002DC737 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44C22934522002DC737 /* DateExtension.swift */; };
+		8B88F45122934B35002DC737 /* CamearaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44F22934B35002DC737 /* CamearaViewController.swift */; };
+		8B88F45222934B35002DC737 /* CamearaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B88F45022934B35002DC737 /* CamearaViewController.xib */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
 		8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
@@ -88,6 +91,9 @@
 		8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseUtils.swift; sourceTree = "<group>"; };
+		8B88F44C22934522002DC737 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8B88F44F22934B35002DC737 /* CamearaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamearaViewController.swift; sourceTree = "<group>"; };
+		8B88F45022934B35002DC737 /* CamearaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CamearaViewController.xib; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 				8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */,
 				8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */,
 				8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */,
+				8B88F44C22934522002DC737 /* DateExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 		8B7AF7E3227CA3420009BB40 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B88F44E22934AA5002DC737 /* Camera */,
 				8B83F94C228B5E7700AC9260 /* Home */,
 				8B83F94B228B5E6A00AC9260 /* Like */,
 				8B83F94A228B5E6000AC9260 /* Search */,
@@ -315,6 +323,15 @@
 				8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		8B88F44E22934AA5002DC737 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				8B88F44F22934B35002DC737 /* CamearaViewController.swift */,
+				8B88F45022934B35002DC737 /* CamearaViewController.xib */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		8BC210822280D47A00FBD0E1 /* Protocols */ = {
@@ -409,6 +426,7 @@
 				8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */,
 				8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */,
 				8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */,
+				8B88F45222934B35002DC737 /* CamearaViewController.xib in Resources */,
 				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
 				8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */,
 				8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */,
@@ -482,8 +500,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
+				8B88F44D22934522002DC737 /* DateExtension.swift in Sources */,
 				8B83F947228B2CF600AC9260 /* User.swift in Sources */,
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
+				8B88F45122934B35002DC737 /* CamearaViewController.swift in Sources */,
 				8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */,
 				8B83F95A228B64F900AC9260 /* InstagramImageView.swift in Sources */,
 				8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */,

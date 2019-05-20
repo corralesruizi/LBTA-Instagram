@@ -19,12 +19,13 @@ class HomeViewController: UIViewController,UIScrollViewDelegate {
         setupNavigationItems()
         setupCollectionView()
         fetchPosts()
+        fetchFollowingUserIds()
     }
 
     fileprivate func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cameraIcon"), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cameraIcon"), style: .plain, target: self, action: #selector(ShowCamera))
     }
     
     fileprivate func setupCollectionView()
@@ -32,6 +33,10 @@ class HomeViewController: UIViewController,UIScrollViewDelegate {
         cvPosts.register(cellNib,forCellWithReuseIdentifier:cellId)
         cvPosts.dataSource = self
         cvPosts.delegate = self
+    }
+    
+    @objc fileprivate func ShowCamera(){
+        present(CamearaViewController(), animated: true, completion: nil)
     }
     
     fileprivate func fetchPosts() {
@@ -44,10 +49,33 @@ class HomeViewController: UIViewController,UIScrollViewDelegate {
     fileprivate func fetchPostsWithUser(user: User) {
         
         Database.fetchPostsWithUser(user: user) { [weak self](postsFromUser) in
-            self?.posts = postsFromUser
+            self?.posts.append(contentsOf: postsFromUser)
+            
+            self?.posts.sort(by: { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+            })
+            
             self?.cvPosts.reloadData()
         }
     }
+    
+    fileprivate func fetchFollowingUserIds() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
+            
+            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+            
+            userIdsDictionary.forEach({ (key, value) in
+                Database.fetchUserWithUID(uid: key, completion: { (user) in
+                    self?.fetchPostsWithUser(user: user)
+                })
+            })
+            
+        }) { (err) in
+            print("Failed to fetch following user ids:", err)
+        }
+    }
+    
 }
 
 extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
