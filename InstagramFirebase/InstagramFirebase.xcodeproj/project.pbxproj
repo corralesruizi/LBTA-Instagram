@@ -44,6 +44,8 @@
 		8B88F44D22934522002DC737 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44C22934522002DC737 /* DateExtension.swift */; };
 		8B88F45122934B35002DC737 /* CamearaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44F22934B35002DC737 /* CamearaViewController.swift */; };
 		8B88F45222934B35002DC737 /* CamearaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B88F45022934B35002DC737 /* CamearaViewController.xib */; };
+		8B88F4592293B522002DC737 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */; };
+		8B88F45A2293B522002DC737 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F4582293B522002DC737 /* CustomAnimationDismisser.swift */; };
 		8BB104A12280844300D212D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BB104A02280844300D212D1 /* GoogleService-Info.plist */; };
 		8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
@@ -94,6 +96,8 @@
 		8B88F44C22934522002DC737 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		8B88F44F22934B35002DC737 /* CamearaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamearaViewController.swift; sourceTree = "<group>"; };
 		8B88F45022934B35002DC737 /* CamearaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CamearaViewController.xib; sourceTree = "<group>"; };
+		8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		8B88F4582293B522002DC737 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		8BB104A02280844300D212D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		8B50B4832285BFFF0015B77A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8B88F4582293B522002DC737 /* CustomAnimationDismisser.swift */,
+				8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */,
 				8B50B4842285C05D0015B77A /* AlertView.swift */,
 				8B83F959228B64F900AC9260 /* InstagramImageView.swift */,
 				8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */,
@@ -513,6 +519,7 @@
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8B795F6B228094280073CA66 /* Colors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
+				8B88F4592293B522002DC737 /* CustomAnimationPresentor.swift in Sources */,
 				8B83F949228B572D00AC9260 /* Post.swift in Sources */,
 				8B83F953228B5E9500AC9260 /* LikeViewController.swift in Sources */,
 				8B4760C62281D4DD001AE0AD /* HeaderCollectionViewCell.swift in Sources */,
@@ -522,6 +529,7 @@
 				8B83F95E228B98E500AC9260 /* HomeFeedCollectionViewCell.swift in Sources */,
 				8B7AF7E6227CA46F0009BB40 /* SignUpViewController.swift in Sources */,
 				8B83F943228B13E600AC9260 /* SharePhotoViewController.swift in Sources */,
+				8B88F45A2293B522002DC737 /* CustomAnimationDismisser.swift in Sources */,
 				8B50B4852285C05D0015B77A /* AlertView.swift in Sources */,
 				8B7AF7D2227CA1490009BB40 /* AppDelegate.swift in Sources */,
 			);
