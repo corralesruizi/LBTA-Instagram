@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController=MainTabBarController()
         window?.makeKeyAndVisible()
+        attemptRegisterForNotifications(application: application)
         return true
     }
     
