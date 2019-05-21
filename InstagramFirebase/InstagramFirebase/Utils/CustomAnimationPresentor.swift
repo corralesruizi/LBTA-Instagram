@@ -11,7 +11,7 @@ import UIKit
 class CustomAnimationPresentor: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 0.25
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -23,15 +23,18 @@ class CustomAnimationPresentor: NSObject, UIViewControllerAnimatedTransitioning 
         
         containerView.addSubview(toView)
         
-        let startingFrame = CGRect(x: -toView.frame.width, y: 0, width: toView.frame.width, height: toView.frame.height)
+        let vwWidth = UIScreen.main.bounds.width
+        let vwHeight = UIScreen.main.bounds.height
+        
+        let startingFrame = CGRect(x: -vwWidth, y: 0, width: vwWidth, height: vwHeight)
+    
         toView.frame = startingFrame
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
-            //animation??
+
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             
-            toView.frame = CGRect(x: 0, y: 0, width: toView.frame.width, height: toView.frame.height)
-            
-            fromView.frame = CGRect(x: fromView.frame.width, y: 0, width: fromView.frame.width, height: fromView.frame.height)
+            toView.frame = CGRect(x: 0, y: 0, width: vwWidth, height: vwHeight)
+            fromView.frame = CGRect(x: vwWidth, y: 0, width: vwWidth, height: vwHeight)
             
         }) { (_) in
             transitionContext.completeTransition(true)

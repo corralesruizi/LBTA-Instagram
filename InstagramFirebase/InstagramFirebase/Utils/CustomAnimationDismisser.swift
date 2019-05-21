@@ -11,7 +11,7 @@ import UIKit
 class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 0.25
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -24,12 +24,14 @@ class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning 
         
         containerView.addSubview(toView)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
+        let vwWidth = UIScreen.main.bounds.width
+        let vwHeight = UIScreen.main.bounds.height
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             //animation??
             
-            fromView.frame = CGRect(x: -fromView.frame.width, y: 0, width: fromView.frame.width, height: fromView.frame.height)
-            
-            toView.frame = CGRect(x: 0, y: 0, width: toView.frame.width, height: toView.frame.height)
+            fromView.frame = CGRect(x: -vwWidth, y: 0, width: vwWidth, height: vwHeight)
+            toView.frame = CGRect(x: 0, y: 0, width: vwWidth, height: vwHeight)
             
         }) { (_) in
             transitionContext.completeTransition(true)

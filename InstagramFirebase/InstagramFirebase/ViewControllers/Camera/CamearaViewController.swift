@@ -29,33 +29,61 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        transitioningDelegate = self
         setupCaptureSession()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as? UIView{
+            statusBar.isHidden = true
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.isHidden = false
+    }
+    
     override func viewDidLayoutSubviews() {
         guard let pvl = previewLayer else {return}
         pvl.frame = vwCametaContainer.bounds
     }
 
+    let customAnimationPresentor = CustomAnimationPresentor()
+    let customAnimationDismisser = CustomAnimationDismisser()
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationPresentor
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationDismisser
     }
 
     fileprivate func setupCaptureSession() {
         
-        self.captureSession = AVCaptureSession()
-        self.capturePhotoOutput = AVCapturePhotoOutput()
-        self.captureDevice = AVCaptureDevice.default(for: .video)
-        
-        let input = try! AVCaptureDeviceInput(device: self.captureDevice!)
-        self.captureSession?.addInput(input)
-        self.captureSession?.addOutput(self.capturePhotoOutput!)
-       
-        self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
-        self.vwCametaContainer.layer.addSublayer(self.previewLayer!)
-        self.captureSession?.startRunning()
-        print("Started running")
+        DispatchQueue.global(qos: .background).async {
+            
+            self.captureSession = AVCaptureSession()
+            self.capturePhotoOutput = AVCapturePhotoOutput()
+            self.captureDevice = AVCaptureDevice.default(for: .video)
+            
+            let input = try! AVCaptureDeviceInput(device: self.captureDevice!)
+            self.captureSession?.addInput(input)
+            self.captureSession?.addOutput(self.capturePhotoOutput!)
+            self.captureSession?.startRunning()
+            
+            DispatchQueue.main.async {
+                self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
+                guard let pvl = self.previewLayer else {return}
+                pvl.frame = UIScreen.main.bounds
+                self.vwCametaContainer.layer.addSublayer(self.previewLayer!)
+            }
+        }
     }
     
     @IBAction func CloseCameraAction(_ sender: Any) {
