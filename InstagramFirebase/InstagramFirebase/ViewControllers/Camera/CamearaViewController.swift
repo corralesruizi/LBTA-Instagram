@@ -35,14 +35,13 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as? UIView{
+        guard let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as? UIView else {return}
             statusBar.isHidden = true
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        guard let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as? UIView else {return}
         statusBar.isHidden = false
     }
     
