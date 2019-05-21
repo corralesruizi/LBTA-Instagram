@@ -20,15 +20,15 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
     
    
     var previewLayer:CALayer?
-    let output = AVCapturePhotoOutput()
     
-    let customAnimationPresentor = CustomAnimationPresentor()
-    let customAnimationDismisser = CustomAnimationDismisser()
+    var captureSession: AVCaptureSession?
+    var capturePhotoOutput: AVCapturePhotoOutput?
+    @objc var captureDevice: AVCaptureDevice?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        transitioningDelegate = self
         setupCaptureSession()
     }
 
@@ -36,48 +36,26 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
         guard let pvl = previewLayer else {return}
         pvl.frame = vwCametaContainer.bounds
     }
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        return customAnimationPresentor
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        return customAnimationDismisser
-    }
+
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
 
     fileprivate func setupCaptureSession() {
-        let captureSession = AVCaptureSession()
         
-        //1. setup inputs
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        self.captureSession = AVCaptureSession()
+        self.capturePhotoOutput = AVCapturePhotoOutput()
+        self.captureDevice = AVCaptureDevice.default(for: .video)
         
-        do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-            if captureSession.canAddInput(input) {
-                captureSession.addInput(input)
-            }
-        } catch let err {
-            print("Could not setup camera input:", err)
-        }
-        
-        //2. setup outputs
-        let output = AVCapturePhotoOutput()
-        if captureSession.canAddOutput(output) {
-            captureSession.addOutput(output)
-        }
-        
-        //3. setup output preview
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        
-        guard let pvl = previewLayer else {return}
-        vwCametaContainer.layer.addSublayer(pvl)
-        captureSession.startRunning()
+        let input = try! AVCaptureDeviceInput(device: self.captureDevice!)
+        self.captureSession?.addInput(input)
+        self.captureSession?.addOutput(self.capturePhotoOutput!)
+       
+        self.previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession!)
+        self.vwCametaContainer.layer.addSublayer(self.previewLayer!)
+        self.captureSession?.startRunning()
+        print("Started running")
     }
     
     @IBAction func CloseCameraAction(_ sender: Any) {
@@ -85,34 +63,30 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
     }
     
     @IBAction func CaptureAction(_ sender: Any) {
-        print("Photo captured")
-        
         print("Capturing photo...")
         
-        let settings = AVCapturePhotoSettings()
-        
-        // do not execute camera capture for simulator
-        #if (!arch(x86_64))
-        guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
-        
-        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
-        
-        output.capturePhoto(with: settings, delegate: self)
-        #endif
-        
+        let photoSettings : AVCapturePhotoSettings!
+        photoSettings = AVCapturePhotoSettings.init(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        photoSettings.isAutoStillImageStabilizationEnabled = true
+        photoSettings.flashMode = .off
+        photoSettings.isHighResolutionPhotoEnabled = false
+        self.capturePhotoOutput?.capturePhoto(with: photoSettings, delegate: self)
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        let imageData = photo.fileDataRepresentation()
-        let previewImage = UIImage(data: imageData!)
         
-        vwCametaContainer.isHidden=false
-        imgCapture.image=previewImage
-        print("Finish processing photo sample buffer...")
+        captureSession?.stopRunning()
+        
+        guard let data = photo.fileDataRepresentation() else {return}
+        
+        let previewImage = UIImage(data: data)
+        imgCapture.image = previewImage
+        vwPreviewCapture.isHidden=false
     }
     
     
     @IBAction func SaveAction(_ sender: UIButton) {
+        
         guard let previewImage = imgCapture.image else { return }
         
         let library = PHPhotoLibrary.shared()
@@ -140,7 +114,7 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
                 savedLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 80)
                 savedLabel.center = self.vwCametaContainer.center
                 
-                self.vwCametaContainer.addSubview(savedLabel)
+                self.vwPreviewCapture.addSubview(savedLabel)
                 
                 savedLabel.layer.transform = CATransform3DMakeScale(0, 0, 0)
                 
@@ -157,6 +131,7 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
                         
                     }, completion: { (_) in
                         savedLabel.removeFromSuperview()
+                        self.dismiss(animated: true, completion: nil)
                     })
                 })
             }
@@ -165,6 +140,7 @@ class CamearaViewController: UIViewController,AVCapturePhotoCaptureDelegate,UIVi
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {
+        captureSession?.startRunning()
         vwPreviewCapture.isHidden=true
     }
 }
