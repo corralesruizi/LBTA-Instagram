@@ -12,7 +12,8 @@ class LikeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = "Following"
         // Do any additional setup after loading the view.
     }
 

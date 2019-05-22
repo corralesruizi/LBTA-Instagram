@@ -40,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
         
         UNUserNotificationCenter.current().delegate = self
         
-        // user notifications auth
-        // all of this works for iOS 10+
         let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, err) in
             if let err = err {
