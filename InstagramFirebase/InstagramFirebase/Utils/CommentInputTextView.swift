@@ -1,11 +1,3 @@
-//
-//  CommentInputTextView.swift
-//  InstagramFirebase
-//
-//  Created by Brian Voong on 1/3/18.
-//  Copyright © 2018 Lets Build That App. All rights reserved.
-//
-
 import UIKit
 
 class CommentInputTextView: UITextView {
