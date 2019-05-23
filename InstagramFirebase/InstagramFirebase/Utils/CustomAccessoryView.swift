@@ -11,6 +11,7 @@ class CommentInputAccessoryView: UIView {
     func clearCommentTextField() {
         commentTextView.text = nil
         commentTextView.showPlaceholderLabel()
+        commentTextView.resignFirstResponder()
     }
     
     fileprivate let commentTextView: CommentInputTextView = {

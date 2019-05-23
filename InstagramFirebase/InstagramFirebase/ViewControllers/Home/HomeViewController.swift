@@ -79,7 +79,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     func didTapComment(post: Post) {
-        navigationController?.pushViewController(CommentsViewController(), animated: true)
+        let commentVC = CommentsViewController()
+        commentVC.post = post
+        navigationController?.pushViewController(commentVC, animated: true)
     }
 }
 
@@ -93,6 +95,7 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
         -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeFeedCollectionViewCell
             cell.post = posts[indexPath.item]
+            print(posts[indexPath.item].id)
             cell.delegate=self
             return cell
     }
