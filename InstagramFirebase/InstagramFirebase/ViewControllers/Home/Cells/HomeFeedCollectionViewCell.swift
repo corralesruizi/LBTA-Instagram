@@ -13,6 +13,8 @@ class HomeFeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgPhoto: InstagramImageView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var imgUser: InstagramImageView!
+    weak var delegate: HomePostCellDelegate?
+
     
     var post: Post? {
         didSet {
@@ -41,7 +43,8 @@ class HomeFeedCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func btnMessage(_ sender: UIButton) {
-        print("Message")
+        guard let post = self.post else {return}
+        delegate?.didTapComment(post: post)
     }
     
     @IBAction func bttnSend(_ sender: UIButton) {

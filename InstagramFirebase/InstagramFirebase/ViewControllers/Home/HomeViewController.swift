@@ -1,7 +1,9 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController,UIScrollViewDelegate {
+class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDelegate {
+   
+    
 
     @IBOutlet weak var cvPosts: UICollectionView!
     
@@ -76,6 +78,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate {
         }
     }
     
+    func didTapComment(post: Post) {
+        navigationController?.pushViewController(CommentsViewController(), animated: true)
+    }
 }
 
 extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -88,6 +93,7 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
         -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeFeedCollectionViewCell
             cell.post = posts[indexPath.item]
+            cell.delegate=self
             return cell
     }
     
