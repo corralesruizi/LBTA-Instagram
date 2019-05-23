@@ -13,6 +13,11 @@ class CommentsTableViewCell: UITableViewCell {
             
             attributedText.append(NSAttributedString(string: " " + comment.text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
             
+            attributedText.append(NSAttributedString(string: "\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)]))
+            
+            attributedText.append(NSAttributedString(string: "\n\(comment.creationDate.timeAgoDisplay())", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)]))
+
+            
             lblComment.attributedText = attributedText
             imgProfile.loadImage(urlString: comment.user.profileImageUrl)
         }
