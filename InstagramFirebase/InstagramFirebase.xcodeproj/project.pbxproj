@@ -262,7 +262,7 @@
 		8B7AF7E3227CA3420009BB40 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8B88F45F22960508002DC737 /* Commentts */,
+				8B88F45F22960508002DC737 /* Comments */,
 				8B88F44E22934AA5002DC737 /* Camera */,
 				8B83F94C228B5E7700AC9260 /* Home */,
 				8B83F94B228B5E6A00AC9260 /* Like */,
@@ -362,14 +362,14 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		8B88F45F22960508002DC737 /* Commentts */ = {
+		8B88F45F22960508002DC737 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
 				8B972C502296494F008C44EB /* Cells */,
 				8B88F46022960523002DC737 /* CommentsViewController.swift */,
 				8B88F46122960523002DC737 /* CommentsViewController.xib */,
 			);
-			path = Commentts;
+			path = Comments;
 			sourceTree = "<group>";
 		};
 		8B972C502296494F008C44EB /* Cells */ = {
