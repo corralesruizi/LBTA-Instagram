@@ -38,6 +38,11 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     @objc fileprivate func ShowCamera(){
+        
+        #if targetEnvironment(simulator)
+        return
+        #endif
+        
         present(CamearaViewController(), animated: true, completion: nil)
     }
     
@@ -95,7 +100,6 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
         -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomeFeedCollectionViewCell
             cell.post = posts[indexPath.item]
-            print(posts[indexPath.item].id)
             cell.delegate=self
             return cell
     }

@@ -23,6 +23,9 @@ class CommentInputTextView: UITextView {
     }
     
     @objc func handleTextChange() {
+        if text.count  >= 100 {
+            text.removeLast()
+        }
         placeholderLabel.isHidden = !self.text.isEmpty
     }
     

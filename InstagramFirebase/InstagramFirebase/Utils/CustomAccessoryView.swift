@@ -20,6 +20,7 @@ class CommentInputAccessoryView: UIView {
         tv.layer.cornerRadius=5
         tv.backgroundColor = UIColor.searchBgAppColor
         tv.isScrollEnabled = false
+        tv.keyboardType = UIKeyboardType.twitter
         tv.font = UIFont.systemFont(ofSize: 18)
         return tv
     }()
@@ -45,20 +46,12 @@ class CommentInputAccessoryView: UIView {
         
         addSubview(commentTextView)
         
-            commentTextView.anchor(top: topAnchor, left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: submitButton.leftAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
-      
-        setupLineSeparatorView()
+        commentTextView.anchor(top: topAnchor, left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: submitButton.leftAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 12, width: 0, height: 0)
+        commentTextView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
     }
     
     override var intrinsicContentSize: CGSize {
         return .zero
-    }
-    
-    fileprivate func setupLineSeparatorView() {
-        let lineSeparatorView = UIView()
-        lineSeparatorView.backgroundColor = UIColor(red: 230, green: 230, blue: 230,alpha: 1)
-        addSubview(lineSeparatorView)
-        lineSeparatorView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     @objc func handleSubmit() {

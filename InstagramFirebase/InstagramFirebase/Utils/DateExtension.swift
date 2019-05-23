@@ -12,6 +12,7 @@ extension Date {
     func timeAgoDisplay() -> String {
         let secondsAgo = Int(Date().timeIntervalSince(self))
         
+        let justnow = 10
         let minute = 60
         let hour = 60 * minute
         let day = 24 * hour
@@ -20,7 +21,9 @@ extension Date {
         
         let quotient: Int
         let unit: String
-        if secondsAgo < minute {
+        if secondsAgo < justnow{
+            return "just now"
+        }else if secondsAgo < minute {
             quotient = secondsAgo
             unit = "second"
         } else if secondsAgo < hour {
