@@ -11,7 +11,7 @@ class UserProfileViewController: UIViewController {
     let headerNib = UINib(nibName: "HeaderCollectionViewCell", bundle: nil)
     let cellNib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
     
-    var user: User?
+    var user: firebaseUser?
     var posts = [Post]()
     var userId: String?
     var isFinishedPaging = false

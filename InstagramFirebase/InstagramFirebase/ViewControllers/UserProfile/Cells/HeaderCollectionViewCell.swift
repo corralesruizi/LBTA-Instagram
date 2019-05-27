@@ -10,7 +10,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblFollowing: UILabel!
     @IBOutlet weak var btnEdit: UIButton!
     
-    var user: User?{
+    var user: firebaseUser?{
         didSet{
             
             guard let profileImageUrl = user?.profileImageUrl else { return }

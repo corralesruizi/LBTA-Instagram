@@ -53,7 +53,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
         }
     }
     
-    fileprivate func fetchPostsWithUser(user: User) {
+    fileprivate func fetchPostsWithUser(user: firebaseUser) {
         
         Database.fetchPostsWithUser(user: user) { [weak self](postsFromUser) in
             self?.posts.append(contentsOf: postsFromUser)

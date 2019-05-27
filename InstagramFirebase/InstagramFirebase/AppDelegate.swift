@@ -27,11 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
         print("Registered with FCM with token:", fcmToken)
     }
     
-    // listen for user notifications
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(.alert)
     }
-    
     
     private func attemptRegisterForNotifications(application: UIApplication) {
         print("Attempting to register APNS...")
@@ -53,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
                 print("Auth denied")
             }
         }
-        
         application.registerForRemoteNotifications()
     }
 }

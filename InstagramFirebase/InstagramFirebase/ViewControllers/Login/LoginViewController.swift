@@ -3,22 +3,42 @@ import Firebase
 
 class LoginViewController: UIViewController {
 
+    //MVVM Section
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnSignUp: UIButton!
     @IBOutlet weak var btnLogIn: UIButton!
     
+    private var loginVM = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        BindUI()
         navigationController?.isNavigationBarHidden=true
     }
     
+    private func BindUI()
+    {
+        loginVM.username.bind { [weak self] in
+            self?.txtEmail.text = $0
+        }
+        
+        loginVM.pasword.bind { [weak self] in
+            self?.txtPassword.text = $0
+        }
+    }
+    
+    //IGNORE MVC Code Below
     @IBAction func signUpAction(_ sender: UIButton) {
         navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
     
     
     @IBAction func logInAction(_ sender: UIButton) {
+        
+        loginVM.login()
+        return
+        
         guard let email = txtEmail.text else { return }
         guard let password = txtPassword.text else { return }
         
@@ -40,10 +60,13 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func textChanged(_ sender: UITextField) {
+
+        loginVM.username.value = txtEmail.text ?? ""
+        loginVM.pasword.value = txtPassword.text ?? ""
         
         let isFormValid = txtEmail.text?.isEmpty == false
             && txtPassword.text?.isEmpty == false
-        
+
         if isFormValid{
             btnLogIn.isEnabled=true
             btnLogIn.backgroundColor = .mainAppColor
@@ -53,7 +76,6 @@ class LoginViewController: UIViewController {
             btnLogIn.isEnabled=false
             btnLogIn.backgroundColor = .lightMainAppColor
         }
-        
     }
     
     @IBAction func returnPressed(_ sender: UITextField) {
@@ -61,3 +83,4 @@ class LoginViewController: UIViewController {
     }
     
 }
+

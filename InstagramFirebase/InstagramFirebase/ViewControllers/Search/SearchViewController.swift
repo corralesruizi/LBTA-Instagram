@@ -8,8 +8,8 @@ class SearchViewController: UIViewController {
     let cellId = "cellId"
     let cellNib = UINib(nibName: "UserSearchCollectionViewCell", bundle: nil)
     
-    var filteredUsers = [User]()
-    var users = [User]()
+    var filteredUsers = [firebaseUser]()
+    var users = [firebaseUser]()
     
     lazy var searchBar: UISearchBar = {
         let sb = UISearchBar()
@@ -64,7 +64,7 @@ class SearchViewController: UIViewController {
                 
                 guard let userDictionary = value as? [String: Any] else { return }
                 
-                let user = User(uid: key, dictionary: userDictionary)
+                let user = firebaseUser(uid: key, dictionary: userDictionary)
                 self?.users.append(user)
             })
             

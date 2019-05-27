@@ -2,12 +2,12 @@ import Foundation
 
 struct Comment {
     
-    let user: User
+    let user: firebaseUser
     let text: String
     let uid: String
     let creationDate: Date
     
-    init(user: User, dictionary: [String: Any]) {
+    init(user: firebaseUser, dictionary: [String: Any]) {
         self.user = user
         self.text = dictionary["text"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""

@@ -2,11 +2,11 @@ import Foundation
 import Firebase
 extension Database {
     
-    static func fetchUserWithUID(uid: String, completion: @escaping (User) -> ()) {
+    static func fetchUserWithUID(uid: String, completion: @escaping (firebaseUser) -> ()) {
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let userDictionary = snapshot.value as? [String: Any] else { return }
-            let user = User(uid: uid, dictionary: userDictionary)
+            let user = firebaseUser(uid: uid, dictionary: userDictionary)
             completion(user)
             
         }) { (err) in
@@ -14,7 +14,7 @@ extension Database {
         }
     }
     
-    static func fetchPostsWithUser(user: User,completion: @escaping ([Post])->()) {
+    static func fetchPostsWithUser(user: firebaseUser,completion: @escaping ([Post])->()) {
         
         var posts = [Post]()
         let ref = Database.database().reference().child("posts").child(user.uid)

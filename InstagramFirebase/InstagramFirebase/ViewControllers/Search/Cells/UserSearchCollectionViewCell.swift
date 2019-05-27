@@ -5,7 +5,7 @@ class UserSearchCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var imgUser: InstagramImageView!
     
-    var user: User? {
+    var user: firebaseUser? {
         didSet {
             imgUser.layer.cornerRadius=20
             lblUsername.text = user?.username
