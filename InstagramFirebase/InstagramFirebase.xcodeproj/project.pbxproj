@@ -17,7 +17,7 @@
 		8B50B4812284BFE20015B77A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50B47F2284BFE20015B77A /* LoginViewController.swift */; };
 		8B50B4822284BFE20015B77A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B50B4802284BFE20015B77A /* LoginViewController.xib */; };
 		8B50B4852285C05D0015B77A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50B4842285C05D0015B77A /* AlertView.swift */; };
-		8B795F6B228094280073CA66 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B795F6A228094280073CA66 /* Colors.swift */; };
+		8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B795F6A228094280073CA66 /* UIColor+AppColors.swift */; };
 		8B7AF7D2227CA1490009BB40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */; };
 		8B7AF7D9227CA14A0009BB40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */; };
 		8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		8B83F95E228B98E500AC9260 /* HomeFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */; };
 		8B83F95F228B98E500AC9260 /* HomeFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */; };
 		8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */; };
-		8B88F44D22934522002DC737 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44C22934522002DC737 /* DateExtension.swift */; };
+		8B88F44D22934522002DC737 /* Date+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44C22934522002DC737 /* Date+Description.swift */; };
 		8B88F45122934B35002DC737 /* CamearaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F44F22934B35002DC737 /* CamearaViewController.swift */; };
 		8B88F45222934B35002DC737 /* CamearaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B88F45022934B35002DC737 /* CamearaViewController.xib */; };
 		8B88F4592293B522002DC737 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */; };
@@ -55,10 +55,7 @@
 		8B972C57229656B8008C44EB /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C55229656B8008C44EB /* CommentsTableViewCell.swift */; };
 		8B972C58229656B8008C44EB /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B972C56229656B8008C44EB /* CommentsTableViewCell.xib */; };
 		8B972C5A22965F86008C44EB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C5922965F86008C44EB /* Comment.swift */; };
-		8B972C6022984305008C44EB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C5F22984305008C44EB /* Repository.swift */; };
-		8B972C6322984380008C44EB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C6222984380008C44EB /* SignUpViewModel.swift */; };
 		8B972C65229844AD008C44EB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C64229844AD008C44EB /* LoginViewModel.swift */; };
-		8B972C6722984864008C44EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C6622984864008C44EB /* User.swift */; };
 		8B972C69229852DF008C44EB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C68229852DF008C44EB /* Observable.swift */; };
 		8BF85629229C74E500F117B8 /* NSObject+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85628229C74E500F117B8 /* NSObject+Observable.swift */; };
 		8BF8562B229C75F800F117B8 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8562A229C75F800F117B8 /* Bindable.swift */; };
@@ -67,8 +64,7 @@
 		8BF85632229DA31E00F117B8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85631229DA31E00F117B8 /* Validator.swift */; };
 		8BF85636229DD3B900F117B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85635229DD3B900F117B8 /* HomeViewModel.swift */; };
 		8BF85638229DD80400F117B8 /* HomeFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85637229DD80400F117B8 /* HomeFeedDelegate.swift */; };
-		8BF8563A229DE69D00F117B8 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85639229DE69D00F117B8 /* Box.swift */; };
-		8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */; };
+		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
 		8BF8E6EB228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E9228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib */; };
@@ -88,7 +84,7 @@
 		8B50B47F2284BFE20015B77A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8B50B4802284BFE20015B77A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		8B50B4842285C05D0015B77A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		8B795F6A228094280073CA66 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8B795F6A228094280073CA66 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		8B7AF7CE227CA1490009BB40 /* InstagramFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,7 +110,7 @@
 		8B83F95C228B98E500AC9260 /* HomeFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B83F95D228B98E500AC9260 /* HomeFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseUtils.swift; sourceTree = "<group>"; };
-		8B88F44C22934522002DC737 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8B88F44C22934522002DC737 /* Date+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Description.swift"; sourceTree = "<group>"; };
 		8B88F44F22934B35002DC737 /* CamearaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamearaViewController.swift; sourceTree = "<group>"; };
 		8B88F45022934B35002DC737 /* CamearaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CamearaViewController.xib; sourceTree = "<group>"; };
 		8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
@@ -129,10 +125,7 @@
 		8B972C55229656B8008C44EB /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		8B972C56229656B8008C44EB /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		8B972C5922965F86008C44EB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		8B972C5F22984305008C44EB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		8B972C6222984380008C44EB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8B972C64229844AD008C44EB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		8B972C6622984864008C44EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B972C68229852DF008C44EB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		8BF85628229C74E500F117B8 /* NSObject+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Observable.swift"; sourceTree = "<group>"; };
 		8BF8562A229C75F800F117B8 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -141,8 +134,7 @@
 		8BF85631229DA31E00F117B8 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		8BF85635229DD3B900F117B8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8BF85637229DD80400F117B8 /* HomeFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedDelegate.swift; sourceTree = "<group>"; };
-		8BF85639229DE69D00F117B8 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BF8E6E9228CCE59008CEDD5 /* UserSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSearchCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -219,33 +211,12 @@
 		8B50B4832285BFFF0015B77A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8B88F46822960F25002DC737 /* CommentInputTextView.swift */,
 				8B88F4582293B522002DC737 /* CustomAnimationDismisser.swift */,
 				8B88F4572293B522002DC737 /* CustomAnimationPresentor.swift */,
-				8B50B4842285C05D0015B77A /* AlertView.swift */,
-				8B83F959228B64F900AC9260 /* InstagramImageView.swift */,
 				8B83F97E228C81FA00AC9260 /* FireBaseUtils.swift */,
-				8BF8E6E4228CC442008CEDD5 /* ViewExtension.swift */,
 				8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */,
-				8B88F44C22934522002DC737 /* DateExtension.swift */,
-				8B88F46622960E0B002DC737 /* CustomAccessoryView.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		8B795F692280940B0073CA66 /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				8B795F6A228094280073CA66 /* Colors.swift */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		8B795F6C2280D3A20073CA66 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		8B7AF7C5227CA1490009BB40 = {
@@ -269,16 +240,14 @@
 		8B7AF7D0227CA1490009BB40 /* InstagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8563B229DF86E00F117B8 /* Views */,
 				8BF85630229DA2D200F117B8 /* Validator */,
 				8BF85627229C74AD00F117B8 /* extensions */,
 				8B972C6122984366008C44EB /* ViewModels */,
-				8B972C5C229842D3008C44EB /* Repository */,
 				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
 				8B83F945228B2CE200AC9260 /* Models */,
 				8B50B4832285BFFF0015B77A /* Utils */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
-				8B795F6C2280D3A20073CA66 /* Presenter */,
-				8B795F692280940B0073CA66 /* Theme */,
 				8B7AF7E3227CA3420009BB40 /* ViewControllers */,
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
@@ -341,9 +310,7 @@
 				8B83F946228B2CF600AC9260 /* firebaseUser.swift */,
 				8B83F948228B572D00AC9260 /* Post.swift */,
 				8B972C5922965F86008C44EB /* Comment.swift */,
-				8B972C6622984864008C44EB /* User.swift */,
 				8B972C68229852DF008C44EB /* Observable.swift */,
-				8BF85639229DE69D00F117B8 /* Box.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,18 +381,9 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		8B972C5C229842D3008C44EB /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				8B972C5F22984305008C44EB /* Repository.swift */,
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		8B972C6122984366008C44EB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				8B972C6222984380008C44EB /* SignUpViewModel.swift */,
 				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
 				8BF85635229DD3B900F117B8 /* HomeViewModel.swift */,
 			);
@@ -446,6 +404,9 @@
 		8BF85627229C74AD00F117B8 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8B88F44C22934522002DC737 /* Date+Description.swift */,
+				8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */,
+				8B795F6A228094280073CA66 /* UIColor+AppColors.swift */,
 				8BF85628229C74E500F117B8 /* NSObject+Observable.swift */,
 				8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */,
 			);
@@ -458,6 +419,17 @@
 				8BF85631229DA31E00F117B8 /* Validator.swift */,
 			);
 			path = Validator;
+			sourceTree = "<group>";
+		};
+		8BF8563B229DF86E00F117B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B83F959228B64F900AC9260 /* InstagramImageView.swift */,
+				8B88F46822960F25002DC737 /* CommentInputTextView.swift */,
+				8B88F46622960E0B002DC737 /* CustomAccessoryView.swift */,
+				8B50B4842285C05D0015B77A /* AlertView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8BF8E6EC228CCE66008CEDD5 /* Cells */ = {
@@ -628,27 +600,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
-				8B88F44D22934522002DC737 /* DateExtension.swift in Sources */,
+				8B88F44D22934522002DC737 /* Date+Description.swift in Sources */,
 				8B83F947228B2CF600AC9260 /* firebaseUser.swift in Sources */,
 				8B4760C22281D4AE001AE0AD /* ImageCollectionViewCell.swift in Sources */,
 				8BF85629229C74E500F117B8 /* NSObject+Observable.swift in Sources */,
 				8BF8562B229C75F800F117B8 /* Bindable.swift in Sources */,
 				8B88F45122934B35002DC737 /* CamearaViewController.swift in Sources */,
 				8B88F46522960A49002DC737 /* HomePostDelegate.swift in Sources */,
-				8BF8E6E5228CC443008CEDD5 /* ViewExtension.swift in Sources */,
-				8B972C6022984305008C44EB /* Repository.swift in Sources */,
+				8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */,
 				8B83F95A228B64F900AC9260 /* InstagramImageView.swift in Sources */,
 				8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */,
 				8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */,
-				8BF8563A229DE69D00F117B8 /* Box.swift in Sources */,
 				8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */,
 				8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */,
 				8B88F46722960E0B002DC737 /* CustomAccessoryView.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */,
-				8B795F6B228094280073CA66 /* Colors.swift in Sources */,
+				8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
-				8B972C6722984864008C44EB /* User.swift in Sources */,
 				8BF85632229DA31E00F117B8 /* Validator.swift in Sources */,
 				8B972C69229852DF008C44EB /* Observable.swift in Sources */,
 				8BF85636229DD3B900F117B8 /* HomeViewModel.swift in Sources */,
@@ -656,7 +625,6 @@
 				8B88F46922960F25002DC737 /* CommentInputTextView.swift in Sources */,
 				8B83F949228B572D00AC9260 /* Post.swift in Sources */,
 				8B88F46222960523002DC737 /* CommentsViewController.swift in Sources */,
-				8B972C6322984380008C44EB /* SignUpViewModel.swift in Sources */,
 				8B83F953228B5E9500AC9260 /* LikeViewController.swift in Sources */,
 				8B4760C62281D4DD001AE0AD /* HeaderCollectionViewCell.swift in Sources */,
 				8B50B4812284BFE20015B77A /* LoginViewController.swift in Sources */,

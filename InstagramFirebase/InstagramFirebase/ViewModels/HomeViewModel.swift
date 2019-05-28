@@ -2,8 +2,8 @@ import Foundation
 import Firebase
 
 class HomeViewModel{
+    
     weak var delegate: HomeFeedDelegate?
- 
     var posts: Observable<[Post]> = Observable<[Post]>([Post]())
     var tempPosts = [Post]()
  

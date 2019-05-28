@@ -8,7 +8,6 @@ public class Observable<ObservedType> {
     public var value: ObservedType? {
         didSet {
             if let value = value {
-                print("Value changed: \(value)")
                 notifyObservers(value)
             }
         }
@@ -20,7 +19,6 @@ public class Observable<ObservedType> {
     }
     
     public func bind(observer: @escaping Observer) {
-        print("Binded")
         self.observers.append(observer)
     }
     
