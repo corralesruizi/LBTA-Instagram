@@ -1,24 +1,46 @@
-//
-//  LoginViewModel.swift
-//  InstagramFirebase
-//
-//  Created by Developer on 5/24/19.
-//  Copyright © 2019 Developer. All rights reserved.
-//
-
 import Foundation
+import Firebase
 
 class LoginViewModel{
     
-    private var user = User()
-    private var firebaseUser: firebaseUser?
-    
-    var username: Observable<String> = Observable("")
-    var pasword: Observable<String> = Observable("")
+    var username: Observable<String> = Observable()
+    var password: Observable<String> = Observable()
+    var loginState: Observable<Bool> = Observable()
+    weak var delegate: LoginDelegate?
     
     func login(){
-        username.value = "Hello"
-        print("Login as user: \(username.value) with password \(pasword.value)" )
+        
+        guard let email = username.value else { return }
+        guard let pass = password.value else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: pass, completion: { [weak self] (user, err) in
+            if let err = err {
+               self?.delegate?.onLoginFailure(errorMessage: err.localizedDescription)
+                return
+            }
+            self?.delegate?.onLoginSucess()
+        })
+    }
+    
+    func signUp(){
+        delegate?.signUp()
+    }
+}
+
+extension LoginViewModel{
+    
+    func validateForm(){
+        
+        let usernameValidator = VaildatorFactory.validatorFor(type: .requiredField)
+        let passwordValidator = VaildatorFactory.validatorFor(type: .requiredField)
+        
+        do {
+            try usernameValidator.validated(username.value)
+            try passwordValidator.validated(password.value)
+            delegate?.enableLogin()
+        }catch{
+            delegate?.disableLogin()
+        }
     }
 }
 

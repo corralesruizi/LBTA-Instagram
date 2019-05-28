@@ -1,27 +1,32 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDelegate {
+class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDelegate,HomeFeedDelegate {
    
-    
-
     @IBOutlet weak var cvPosts: UICollectionView!
     
     let cellId = "cellId"
     let cellNib = UINib(nibName: "HomeFeedCollectionViewCell", bundle: nil)
-    
     var posts = [Post]()
     
-    deinit {
-        print("HomeViewController Gone")
-    }
+    var homeVM = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationItems()
         setupCollectionView()
-        fetchPosts()
-        fetchFollowingUserIds()
+        BindUI()
+        homeVM.fetchPosts()
+        homeVM.fetchFollowingUserIds()
+    }
+    
+    func BindUI()
+    {
+        homeVM.delegate=self
+        
+        homeVM.posts.bind {[unowned self] (observable, value) in
+            self.posts = value
+        }
     }
 
     fileprivate func setupNavigationItems() {
@@ -46,43 +51,10 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
         present(CamearaViewController(), animated: true, completion: nil)
     }
     
-    fileprivate func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.fetchUserWithUID(uid: uid) { [weak self](user) in
-            self?.fetchPostsWithUser(user: user)
-        }
+    func reloadHomeFeed() {
+        self.cvPosts.reloadData()
     }
-    
-    fileprivate func fetchPostsWithUser(user: firebaseUser) {
-        
-        Database.fetchPostsWithUser(user: user) { [weak self](postsFromUser) in
-            self?.posts.append(contentsOf: postsFromUser)
-            
-            self?.posts.sort(by: { (p1, p2) -> Bool in
-                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-            })
-            
-            self?.cvPosts.reloadData()
-        }
-    }
-    
-    fileprivate func fetchFollowingUserIds() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
-            
-            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
-            
-            userIdsDictionary.forEach({ (key, value) in
-                Database.fetchUserWithUID(uid: key, completion: { (user) in
-                    self?.fetchPostsWithUser(user: user)
-                })
-            })
-            
-        }) { (err) in
-            print("Failed to fetch following user ids:", err)
-        }
-    }
-    
+
     func didTapComment(post: Post) {
         let commentVC = CommentsViewController()
         commentVC.post = post

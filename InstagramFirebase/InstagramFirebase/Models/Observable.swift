@@ -1,21 +1,32 @@
 import Foundation
-class Observable<ObservedType>{
-    typealias Listener = (ObservedType) -> Void
-    var listener: Listener?
+
+public class Observable<ObservedType> {
+    public typealias Observer = (_ observable: Observable<ObservedType>, ObservedType) -> Void
     
-    var value:ObservedType
-    {
-        didSet{
-            listener?(value)
+    private var observers: [Observer]
+    
+    public var value: ObservedType? {
+        didSet {
+            if let value = value {
+                print("Value changed: \(value)")
+                notifyObservers(value)
+            }
         }
     }
     
-    init(_ value: ObservedType) {
+    public init(_ value: ObservedType? = nil) {
         self.value = value
+        observers = []
     }
- 
-    func bind(listener: Listener?){
-        self.listener = listener
-        listener?(value)
+    
+    public func bind(observer: @escaping Observer) {
+        print("Binded")
+        self.observers.append(observer)
+    }
+    
+    private func notifyObservers(_ value: ObservedType) {
+        self.observers.forEach { [unowned self](observer) in
+            observer(self, value)
+        }
     }
 }

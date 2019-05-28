@@ -41,8 +41,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             <connections>
-                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="6d4-eI-Hjg"/>
-                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="IAa-kn-zRc"/>
+                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="E85-OJ-VUC"/>
+                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="GSa-4t-Rmc"/>
                             </connections>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pk9-D4-nIA">
@@ -52,8 +52,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             <connections>
-                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="kIN-CQ-u9K"/>
-                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="zYY-1Y-J7m"/>
+                                <action selector="returnPressed:" destination="-1" eventType="primaryActionTriggered" id="mRv-ix-N6m"/>
+                                <action selector="textChanged:" destination="-1" eventType="editingChanged" id="E4k-oA-67j"/>
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73q-OU-2cm">
