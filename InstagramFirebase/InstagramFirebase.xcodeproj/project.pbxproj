@@ -65,6 +65,7 @@
 		8BF8563D229DFD7100F117B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */; };
 		8BF85640229F27A600F117B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */; };
 		8BF85642229F2DBD00F117B8 /* InstagramButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85641229F2DBD00F117B8 /* InstagramButton.swift */; };
+		8BF85645229F360900F117B8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85644229F360900F117B8 /* AppCoordinator.swift */; };
 		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
@@ -136,6 +137,7 @@
 		8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BF85641229F2DBD00F117B8 /* InstagramButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramButton.swift; sourceTree = "<group>"; };
+		8BF85644229F360900F117B8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -224,10 +226,10 @@
 		8B7AF7C5227CA1490009BB40 = {
 			isa = PBXGroup;
 			children = (
-				8B7AF7D0227CA1490009BB40 /* InstagramFirebase */,
-				8B7AF7CF227CA1490009BB40 /* Products */,
-				DD0BEC9FB33CF45238F870CF /* Pods */,
 				5DA118A7352845676601BAF3 /* Frameworks */,
+				8B7AF7D0227CA1490009BB40 /* InstagramFirebase */,
+				DD0BEC9FB33CF45238F870CF /* Pods */,
+				8B7AF7CF227CA1490009BB40 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,7 +250,8 @@
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
 				8BF8563E229F22E600F117B8 /* Binding */,
-				8BF85627229C74AD00F117B8 /* extensions */,
+				8BF85643229F35D600F117B8 /* Coordinator */,
+				8BF85627229C74AD00F117B8 /* Extensions */,
 				8B83F945228B2CE200AC9260 /* Models */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
 				8B50B4832285BFFF0015B77A /* Utils */,
@@ -401,14 +404,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		8BF85627229C74AD00F117B8 /* extensions */ = {
+		8BF85627229C74AD00F117B8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8B88F44C22934522002DC737 /* Date+Description.swift */,
 				8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */,
 				8B795F6A228094280073CA66 /* UIColor+AppColors.swift */,
 			);
-			path = extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8BF85630229DA2D200F117B8 /* Validator */ = {
@@ -441,6 +444,14 @@
 				8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */,
 			);
 			path = Binding;
+			sourceTree = "<group>";
+		};
+		8BF85643229F35D600F117B8 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8BF85644229F360900F117B8 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		8BF8E6EC228CCE66008CEDD5 /* Cells */ = {
@@ -610,6 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BF85645229F360900F117B8 /* AppCoordinator.swift in Sources */,
 				8B83F94F228B5E8A00AC9260 /* SearchViewController.swift in Sources */,
 				8B88F44D22934522002DC737 /* Date+Description.swift in Sources */,
 				8B83F947228B2CF600AC9260 /* firebaseUser.swift in Sources */,
