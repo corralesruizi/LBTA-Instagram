@@ -16,13 +16,12 @@ class LoginViewController: UIViewController {
         BindUI()
     }
     
-    private func setupUI()
-    {
+    private func setupUI(){
         navigationController?.isNavigationBarHidden=true
     }
     
-    private func BindUI()
-    {
+    private func BindUI(){
+        
         loginVM.delegate = self
         txtEmail.bind(with: loginVM.username)
         txtPassword.bind(with: loginVM.password)

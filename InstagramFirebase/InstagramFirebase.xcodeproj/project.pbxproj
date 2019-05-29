@@ -20,7 +20,6 @@
 		8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B795F6A228094280073CA66 /* UIColor+AppColors.swift */; };
 		8B7AF7D2227CA1490009BB40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */; };
 		8B7AF7D9227CA14A0009BB40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */; };
-		8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */; };
 		8B7AF7E6227CA46F0009BB40 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */; };
 		8B7AF7E7227CA46F0009BB40 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */; };
 		8B83F9382289FC1700AC9260 /* AddPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83F9362289FC1700AC9260 /* AddPhotosViewController.swift */; };
@@ -89,7 +88,6 @@
 		8B7AF7CE227CA1490009BB40 /* InstagramFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8B7AF7DB227CA14A0009BB40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B7AF7DD227CA14A0009BB40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
@@ -247,8 +245,8 @@
 				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
+				8BF8563E229F22E600F117B8 /* Binding */,
 				8BF85627229C74AD00F117B8 /* extensions */,
-				8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */,
 				8B83F945228B2CE200AC9260 /* Models */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
 				8B50B4832285BFFF0015B77A /* Utils */,
@@ -312,7 +310,6 @@
 				8B83F946228B2CF600AC9260 /* firebaseUser.swift */,
 				8B83F948228B572D00AC9260 /* Post.swift */,
 				8B972C5922965F86008C44EB /* Comment.swift */,
-				8B972C68229852DF008C44EB /* Observable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				8B88F46422960A49002DC737 /* HomePostDelegate.swift */,
-				8BF8562A229C75F800F117B8 /* Bindable.swift */,
 				8BF8562E229D894C00F117B8 /* LoginDelegate.swift */,
 				8BF85637229DD80400F117B8 /* HomeFeedDelegate.swift */,
 			);
@@ -409,8 +405,6 @@
 				8B88F44C22934522002DC737 /* Date+Description.swift */,
 				8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */,
 				8B795F6A228094280073CA66 /* UIColor+AppColors.swift */,
-				8BF85628229C74E500F117B8 /* NSObject+Observable.swift */,
-				8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -433,6 +427,17 @@
 				8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8BF8563E229F22E600F117B8 /* Binding */ = {
+			isa = PBXGroup;
+			children = (
+				8B972C68229852DF008C44EB /* Observable.swift */,
+				8BF8562A229C75F800F117B8 /* Bindable.swift */,
+				8BF85628229C74E500F117B8 /* NSObject+Observable.swift */,
+				8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */,
+			);
+			path = Binding;
 			sourceTree = "<group>";
 		};
 		8BF8E6EC228CCE66008CEDD5 /* Cells */ = {
@@ -525,7 +530,6 @@
 				8B88F46322960523002DC737 /* CommentsViewController.xib in Resources */,
 				8B4760BD2281C08B001AE0AD /* UserProfileViewController.xib in Resources */,
 				8B83F950228B5E8A00AC9260 /* SearchViewController.xib in Resources */,
-				8B7AF7DC227CA14A0009BB40 /* LaunchScreen.storyboard in Resources */,
 				8B83F958228B5EA300AC9260 /* HomeViewController.xib in Resources */,
 				8B88F45222934B35002DC737 /* CamearaViewController.xib in Resources */,
 				8B83F93E2289FD1200AC9260 /* AddPhotosHeaderView.xib in Resources */,
@@ -649,17 +653,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B7AF7DB227CA14A0009BB40 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8B7AF7DE227CA14A0009BB40 /* Debug */ = {

@@ -5,7 +5,6 @@ class LoginViewModel{
     
     var username: Observable<String> = Observable()
     var password: Observable<String> = Observable()
-    var loginState: Observable<Bool> = Observable()
     weak var delegate: LoginDelegate?
     
     func login(){
