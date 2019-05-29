@@ -64,6 +64,7 @@
 		8BF85632229DA31E00F117B8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85631229DA31E00F117B8 /* Validator.swift */; };
 		8BF85636229DD3B900F117B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85635229DD3B900F117B8 /* HomeViewModel.swift */; };
 		8BF85638229DD80400F117B8 /* HomeFeedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85637229DD80400F117B8 /* HomeFeedDelegate.swift */; };
+		8BF8563D229DFD7100F117B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */; };
 		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
@@ -134,6 +135,7 @@
 		8BF85631229DA31E00F117B8 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		8BF85635229DD3B900F117B8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8BF85637229DD80400F117B8 /* HomeFeedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedDelegate.swift; sourceTree = "<group>"; };
+		8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -240,20 +242,20 @@
 		8B7AF7D0227CA1490009BB40 /* InstagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
-				8BF8563B229DF86E00F117B8 /* Views */,
-				8BF85630229DA2D200F117B8 /* Validator */,
-				8BF85627229C74AD00F117B8 /* extensions */,
-				8B972C6122984366008C44EB /* ViewModels */,
 				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
-				8B83F945228B2CE200AC9260 /* Models */,
-				8B50B4832285BFFF0015B77A /* Utils */,
-				8BC210822280D47A00FBD0E1 /* Protocols */,
-				8B7AF7E3227CA3420009BB40 /* ViewControllers */,
+				8B88F45C2293D9C6002DC737 /* GoogleService-Info.plist */,
+				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
+				8BF85627229C74AD00F117B8 /* extensions */,
 				8B7AF7DA227CA14A0009BB40 /* LaunchScreen.storyboard */,
-				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
-				8B88F45C2293D9C6002DC737 /* GoogleService-Info.plist */,
+				8B83F945228B2CE200AC9260 /* Models */,
+				8BC210822280D47A00FBD0E1 /* Protocols */,
+				8B50B4832285BFFF0015B77A /* Utils */,
+				8BF85630229DA2D200F117B8 /* Validator */,
+				8B7AF7E3227CA3420009BB40 /* ViewControllers */,
+				8B972C6122984366008C44EB /* ViewModels */,
+				8BF8563B229DF86E00F117B8 /* Views */,
 			);
 			path = InstagramFirebase;
 			sourceTree = "<group>";
@@ -428,6 +430,7 @@
 				8B88F46822960F25002DC737 /* CommentInputTextView.swift */,
 				8B88F46622960E0B002DC737 /* CustomAccessoryView.swift */,
 				8B50B4842285C05D0015B77A /* AlertView.swift */,
+				8BF8563C229DFD7100F117B8 /* LaunchScreen.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BF8563D229DFD7100F117B8 /* LaunchScreen.xib in Resources */,
 				8B50B4822284BFE20015B77A /* LoginViewController.xib in Resources */,
 				8B83F954228B5E9500AC9260 /* LikeViewController.xib in Resources */,
 				8B972C58229656B8008C44EB /* CommentsTableViewCell.xib in Resources */,
