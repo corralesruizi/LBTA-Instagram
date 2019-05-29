@@ -5,6 +5,7 @@ class LoginViewModel{
     
     var username: Observable<String> = Observable()
     var password: Observable<String> = Observable()
+    var isValid: Observable<Bool> = Observable()
     weak var delegate: LoginDelegate?
     
     func login(){
@@ -36,9 +37,9 @@ extension LoginViewModel{
         do {
             try usernameValidator.validated(username.value)
             try passwordValidator.validated(password.value)
-            delegate?.enableLogin()
+            isValid.value = true
         }catch{
-            delegate?.disableLogin()
+            isValid.value = false
         }
     }
 }

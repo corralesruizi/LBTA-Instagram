@@ -72,7 +72,7 @@
                                 <constraint firstItem="ab4-QE-l3I" firstAttribute="centerY" secondItem="73q-OU-2cm" secondAttribute="centerY" id="hiA-4G-Qrf"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDu-Zs-ymO">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDu-Zs-ymO" customClass="InstagramButtom" customModule="InstagramFirebase" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="131.99999999999997" width="280" height="30"/>
                             <color key="backgroundColor" name="disabledMainColor"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>

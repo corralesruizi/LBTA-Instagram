@@ -6,7 +6,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var txtEmail: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
     @IBOutlet private weak var btnSignUp: UIButton!
-    @IBOutlet private weak var btnLogIn: UIButton!
+    @IBOutlet private weak var btnLogIn: InstagramButtom!
     
     private var loginVM = LoginViewModel()
     
@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         loginVM.delegate = self
         txtEmail.bind(with: loginVM.username)
         txtPassword.bind(with: loginVM.password)
+        btnLogIn.bind(with: loginVM.isValid)
     }
     
     @IBAction func signUpAction(_ sender: UIButton) {
@@ -46,7 +47,6 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginDelegate{
-    
     func onLoginSucess() {
         guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as?
             MainTabBarController else { return }
@@ -57,16 +57,6 @@ extension LoginViewController: LoginDelegate{
     
     func onLoginFailure(errorMessage: String) {
         AlertView.showAlert(view: self, title: "Error", message: errorMessage)
-    }
-    
-    func enableLogin() {
-        btnLogIn.isEnabled=true
-        btnLogIn.backgroundColor = .mainAppColor
-    }
-    
-    func disableLogin() {
-        btnLogIn.isEnabled=false
-        btnLogIn.backgroundColor = .lightMainAppColor
     }
     
     func signUp() {
