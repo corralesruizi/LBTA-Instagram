@@ -66,6 +66,7 @@
 		8BF85640229F27A600F117B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */; };
 		8BF85642229F2DBD00F117B8 /* InstagramButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85641229F2DBD00F117B8 /* InstagramButton.swift */; };
 		8BF85645229F360900F117B8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85644229F360900F117B8 /* AppCoordinator.swift */; };
+		8BF85647229F38FD00F117B8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85646229F38FD00F117B8 /* Coordinator.swift */; };
 		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
@@ -138,6 +139,7 @@
 		8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BF85641229F2DBD00F117B8 /* InstagramButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramButton.swift; sourceTree = "<group>"; };
 		8BF85644229F360900F117B8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		8BF85646229F38FD00F117B8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				8BF85644229F360900F117B8 /* AppCoordinator.swift */,
+				8BF85646229F38FD00F117B8 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				8B83F97F228C81FA00AC9260 /* FireBaseUtils.swift in Sources */,
 				8B83F957228B5EA300AC9260 /* HomeViewController.swift in Sources */,
 				8B88F46722960E0B002DC737 /* CustomAccessoryView.swift in Sources */,
+				8BF85647229F38FD00F117B8 /* Coordinator.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */,
 				8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */,
