@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,LoginDelegate {
 
     @IBOutlet private weak var txtEmail: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
@@ -43,24 +43,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func returnPressed(_ sender: UITextField) {
         sender.resignFirstResponder()
-    }
-}
-
-extension LoginViewController: LoginDelegate{
-    func onLoginSucess() {
-        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as?
-            MainTabBarController else { return }
-        
-        mainTabBarController.setupTabs()
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func onLoginFailure(errorMessage: String) {
-        AlertView.showAlert(view: self, title: "Error", message: errorMessage)
-    }
-    
-    func signUp() {
-        navigationController?.pushViewController(SignUpViewController(), animated: true)
     }
 }
 
