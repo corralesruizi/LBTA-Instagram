@@ -67,6 +67,7 @@
 		8BF85642229F2DBD00F117B8 /* InstagramButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85641229F2DBD00F117B8 /* InstagramButton.swift */; };
 		8BF85645229F360900F117B8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85644229F360900F117B8 /* AppCoordinator.swift */; };
 		8BF85647229F38FD00F117B8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85646229F38FD00F117B8 /* Coordinator.swift */; };
+		8BF85649229F98BC00F117B8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85648229F98BC00F117B8 /* LoginCoordinator.swift */; };
 		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
@@ -140,6 +141,7 @@
 		8BF85641229F2DBD00F117B8 /* InstagramButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramButton.swift; sourceTree = "<group>"; };
 		8BF85644229F360900F117B8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8BF85646229F38FD00F117B8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8BF85648229F98BC00F117B8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 			children = (
 				8BF85644229F360900F117B8 /* AppCoordinator.swift */,
 				8BF85646229F38FD00F117B8 /* Coordinator.swift */,
+				8BF85648229F98BC00F117B8 /* LoginCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				8B83F943228B13E600AC9260 /* SharePhotoViewController.swift in Sources */,
 				8BF8562F229D894C00F117B8 /* LoginDelegate.swift in Sources */,
 				8B88F45A2293B522002DC737 /* CustomAnimationDismisser.swift in Sources */,
+				8BF85649229F98BC00F117B8 /* LoginCoordinator.swift in Sources */,
 				8B50B4852285C05D0015B77A /* AlertView.swift in Sources */,
 				8BF85638229DD80400F117B8 /* HomeFeedDelegate.swift in Sources */,
 				8B7AF7D2227CA1490009BB40 /* AppDelegate.swift in Sources */,

@@ -8,14 +8,14 @@ protocol AppCoordinatorDelegate {
 }
 
 class AppCoordinator:Coordinator,AppCoordinatorDelegate  {
-    
     func showLogin() {
-        print("ShowLogin")
+        
     }
     
     func showTabmenu() {
-    print("TabMenu")
+        
     }
+    
     
     let window: UIWindow?
     

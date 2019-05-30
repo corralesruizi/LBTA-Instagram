@@ -1,6 +1,6 @@
 import Foundation
 
-class Coordinator {
+class Coordinator:NSObject{
     
     private var childCoordinators: [Coordinator] = []
     

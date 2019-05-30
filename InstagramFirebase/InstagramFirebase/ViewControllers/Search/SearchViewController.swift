@@ -33,6 +33,11 @@ class SearchViewController: UIViewController {
         searchBar.isHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchBar.isHidden = true
+    }
+    
     fileprivate func setupNavigationBar()
     {
         navigationController?.navigationBar.addSubview(searchBar)
