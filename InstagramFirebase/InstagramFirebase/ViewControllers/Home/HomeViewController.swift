@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDelegate,HomeFeedDelegate {
-  
+   
     @IBOutlet weak var cvPosts: UICollectionView!
     
     let cellId = "cellId"
@@ -23,7 +23,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     func BindUI()
     {
         homeVM.delegate=self
-        
         homeVM.posts.bind {[unowned self] (observable, value) in
             self.posts = value
         }
@@ -44,11 +43,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     
     @objc fileprivate func ShowCamera(){
         
-        #if targetEnvironment(simulator)
-        return
-        #endif
-        
-        present(CamearaViewController(), animated: true, completion: nil)
+      homeVM.showDeviceCamera()
     }
     
     func reloadHomeFeed() {
@@ -63,42 +58,13 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
 
     func didTapComment(post: Post) {
-        let commentVC = CommentsViewController()
-        commentVC.post = post
-        navigationController?.pushViewController(commentVC, animated: true)
+        homeVM.goToCommentDetails(post: post)
     }
     
     func didTapLike(for cell:HomeFeedCollectionViewCell) {
         guard let indexPath = cvPosts?.indexPath(for: cell) else { return }
         let post = self.posts[indexPath.item]
         homeVM.likePost(for: post, index: indexPath.item)
-    }
-    
-    
-    func didLike(for cell: HomeFeedCollectionViewCell) {
-        
-        guard let indexPath = cvPosts?.indexPath(for: cell) else { return }
-        var post = self.posts[indexPath.item]
-        
-        guard let postId = post.id else { return }
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let values = [uid: post.hasLiked == true ? 0 : 1]
-        Database.database().reference().child("likes").child(postId).updateChildValues(values) { (err, _) in
-            
-            if let err = err {
-                print("Failed to like post:", err)
-                return
-            }
-            
-            print("Successfully liked post.")
-            
-            post.hasLiked = !post.hasLiked
-            self.posts[indexPath.item] = post
-            self.cvPosts?.reloadItems(at: [indexPath])
-            
-        }
     }
 }
 

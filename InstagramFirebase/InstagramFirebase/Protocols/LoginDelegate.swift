@@ -8,6 +8,9 @@ protocol LoginDelegate:class {
 extension LoginDelegate where Self: UIViewController
 {
     func onLoginSucess(){
+        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController
+            as? MainTabBarController else { return }
+        mainTabBarController.setupTabs()
         dismiss(animated: true, completion: nil)
     }
     
