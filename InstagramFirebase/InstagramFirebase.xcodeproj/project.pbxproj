@@ -181,6 +181,7 @@
 		8B4760B62281BF7E001AE0AD /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8565022A187BC00F117B8 /* TabsViewModel.swift */,
 				8B4760B72281BFAB001AE0AD /* MainTabBarViewController.swift */,
 			);
 			path = MainTabBar;
@@ -210,6 +211,7 @@
 		8B50B47E2284B9A50015B77A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
 				8B50B47F2284BFE20015B77A /* LoginViewController.swift */,
 				8B50B4802284BFE20015B77A /* LoginViewController.xib */,
 			);
@@ -260,14 +262,13 @@
 				8BC210822280D47A00FBD0E1 /* Protocols */,
 				8B50B4832285BFFF0015B77A /* Utils */,
 				8BF85630229DA2D200F117B8 /* Validator */,
-				8B7AF7E3227CA3420009BB40 /* ViewControllers */,
-				8B972C6122984366008C44EB /* ViewModels */,
+				8B7AF7E3227CA3420009BB40 /* Scenes */,
 				8BF8563B229DF86E00F117B8 /* Views */,
 			);
 			path = InstagramFirebase;
 			sourceTree = "<group>";
 		};
-		8B7AF7E3227CA3420009BB40 /* ViewControllers */ = {
+		8B7AF7E3227CA3420009BB40 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				8B88F45F22960508002DC737 /* Comments */,
@@ -282,7 +283,7 @@
 				8B4760B62281BF7E001AE0AD /* MainTabBar */,
 				8B4760B52281BF6E001AE0AD /* SignUp */,
 			);
-			path = ViewControllers;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		8B83F9352289FBAA00AC9260 /* AddPhotos */ = {
@@ -346,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				8B83F95B228B984C00AC9260 /* Cells */,
+				8BF85635229DD3B900F117B8 /* HomeViewModel.swift */,
 				8B83F955228B5EA300AC9260 /* HomeViewController.swift */,
 				8B83F956228B5EA300AC9260 /* HomeViewController.xib */,
 			);
@@ -387,16 +389,6 @@
 				8B972C56229656B8008C44EB /* CommentsTableViewCell.xib */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		8B972C6122984366008C44EB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
-				8BF85635229DD3B900F117B8 /* HomeViewModel.swift */,
-				8BF8565022A187BC00F117B8 /* TabsViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		8BC210822280D47A00FBD0E1 /* Protocols */ = {
