@@ -99,7 +99,7 @@ class SignUpViewController: UIViewController {
                         
                         guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController
                             as? MainTabBarController else { return }
-                        mainTabBarController.setupTabs()
+                        //mainTabBarController.setupTabs()
                         self?.dismiss(animated: true, completion: nil)
                     })
                 })

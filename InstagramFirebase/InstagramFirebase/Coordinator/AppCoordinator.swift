@@ -1,7 +1,7 @@
 import UIKit
 
 protocol TabBarDelegate:class {
-    func setUpTabs()
+    func showTabs()
     func showLogin()
     func showPhotoLibrary()
 }
@@ -17,7 +17,10 @@ class AppCoordinator: Coordinator
     }
     
     override func start() {
-        tabBarController.tabVM = TabViewModel()
+        let tabVM = TabViewModel()
+        tabVM.delegate = self
+        tabBarController.tabVM = tabVM
+        showTabs()
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
@@ -25,7 +28,8 @@ class AppCoordinator: Coordinator
 
 extension AppCoordinator: TabBarDelegate
 {
-    func setUpTabs() {
+    func showTabs() {
+        removeAllChildCoordinatorsWith(type: LoginCoordinator.self)
         let homeController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"),root: HomeViewController())
         let searchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"),root: SearchViewController())
         let cameraController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"))
@@ -33,25 +37,26 @@ extension AppCoordinator: TabBarDelegate
         let userProfileController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"),
                                                           root: UserProfileViewController())
         
-        
         tabBarController.viewControllers=[homeController,
                          searchController,
                          cameraController,
                          likeController,
                          userProfileController]
         
-        setupTabImages()
+        alignImages()
     }
     
     func showLogin() {
-        //Do some child coordinator logic
+        let loginCoordinator = LoginCoordinator(tabMenu: tabBarController)
+        addChildCoordinator(loginCoordinator)
+        loginCoordinator.start()
     }
     
     func showPhotoLibrary(){
         //Do some child coordinator stuff
     }
     
-    fileprivate func setupTabImages()
+    fileprivate func alignImages()
     {
         guard let items = tabBarController.tabBar.items else { return }
         
@@ -68,5 +73,4 @@ extension AppCoordinator: TabBarDelegate
         navController.tabBarItem.selectedImage = selectedImage
         return navController
     }
-    
 }

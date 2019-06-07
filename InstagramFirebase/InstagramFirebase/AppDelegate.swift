@@ -7,14 +7,15 @@ import Messages
 class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController=MainTabBarController()
-        window?.makeKeyAndVisible()
+        appCoordinator = AppCoordinator(window: window)
+        appCoordinator?.start()        
         attemptRegisterForNotifications(application: application)
         return true
     }

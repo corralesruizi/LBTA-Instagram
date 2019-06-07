@@ -8,10 +8,11 @@ class LoginViewController: UIViewController,LoginDelegate {
     @IBOutlet private weak var btnSignUp: UIButton!
     @IBOutlet private weak var btnLogIn: InstagramButtom!
     
-    private var loginVM = LoginViewModel()
+    var loginVM: LoginViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("LoginLoaded")
         setupUI()
         BindUI()
     }
@@ -21,24 +22,23 @@ class LoginViewController: UIViewController,LoginDelegate {
     }
     
     private func BindUI(){
-        
-        loginVM.delegate = self
-        txtEmail.bind(with: loginVM.username)
-        txtPassword.bind(with: loginVM.password)
-        btnLogIn.bind(with: loginVM.isValid)
+        guard let vm = loginVM else { return}
+        txtEmail.bind(with: vm.username)
+        txtPassword.bind(with: vm.password)
+        btnLogIn.bind(with: vm.isValid)
     }
     
     @IBAction func signUpAction(_ sender: UIButton) {
-        loginVM.signUp()
+        loginVM?.signUp()
     }
     
     @IBAction func logInAction(_ sender: UIButton) {
-        loginVM.login()
+        loginVM?.login()
     }
 
     @IBAction func textChanged(_ sender: UITextField) {
         sender.valueChanged()
-        loginVM.validateForm()
+        loginVM?.validateForm()
     }
     
     @IBAction func returnPressed(_ sender: UITextField) {

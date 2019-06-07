@@ -7,8 +7,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     
     let cellId = "cellId"
     let cellNib = UINib(nibName: "HomeFeedCollectionViewCell", bundle: nil)
-    var posts = [Post]()
-    
     var homeVM = HomeViewModel()
     
     override func viewDidLoad() {
@@ -24,10 +22,10 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     {
         homeVM.delegate=self
         homeVM.posts.bind {[unowned self] (observable, value) in
-            self.posts = value
+            self.cvPosts.reloadData()
         }
     }
-
+    
     fileprivate func setupNavigationItems() {
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
@@ -42,7 +40,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     @objc fileprivate func ShowCamera(){
-        
       homeVM.showDeviceCamera()
     }
     
@@ -51,9 +48,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     func didLikePost(with post: Post, at index: Int) {
-        var mtpost = post
-        mtpost.hasLiked = !post.hasLiked
-        self.posts[index] = mtpost
         self.cvPosts?.reloadItems(at: [IndexPath(item: index, section: 0)])
     }
 
@@ -62,9 +56,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     func didTapLike(for cell:HomeFeedCollectionViewCell) {
-        guard let indexPath = cvPosts?.indexPath(for: cell) else { return }
-        let post = self.posts[indexPath.item]
-        homeVM.likePost(for: post, index: indexPath.item)
+//        guard let indexPath = cvPosts?.indexPath(for: cell) else { return }
+//        let post = self.posts[indexPath.item]
+//        homeVM.likePost(for: post, index: indexPath.item)
     }
 }
 
@@ -95,6 +89,10 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
         let width = UIScreen.main.bounds.width
         let height = 56 + width + 44 + 74
         return CGSize(width: width,height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
 }
 

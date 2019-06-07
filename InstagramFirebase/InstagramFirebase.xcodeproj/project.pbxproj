@@ -68,6 +68,7 @@
 		8BF8564D22A17CEA00F117B8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8564C22A17CEA00F117B8 /* Coordinator.swift */; };
 		8BF8564F22A17F4E00F117B8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8564E22A17F4E00F117B8 /* AppCoordinator.swift */; };
 		8BF8565122A187BC00F117B8 /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8565022A187BC00F117B8 /* TabsViewModel.swift */; };
+		8BF8565822A97C6300F117B8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8565722A97C6300F117B8 /* LoginCoordinator.swift */; };
 		8BF8E6E5228CC443008CEDD5 /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */; };
 		8BF8E6E7228CC9CB008CEDD5 /* NSImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */; };
 		8BF8E6EA228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */; };
@@ -140,8 +141,9 @@
 		8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BF85641229F2DBD00F117B8 /* InstagramButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramButton.swift; sourceTree = "<group>"; };
 		8BF8564C22A17CEA00F117B8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		8BF8564E22A17F4E00F117B8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		8BF8564E22A17F4E00F117B8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = ../../Coordinator/AppCoordinator.swift; sourceTree = "<group>"; };
 		8BF8565022A187BC00F117B8 /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
+		8BF8565722A97C6300F117B8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		8BF8E6E4228CC442008CEDD5 /* UIView+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
 		8BF8E6E6228CC9CB008CEDD5 /* NSImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageCache.swift; sourceTree = "<group>"; };
 		8BF8E6E8228CCE59008CEDD5 /* UserSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		8B4760B62281BF7E001AE0AD /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8564E22A17F4E00F117B8 /* AppCoordinator.swift */,
 				8BF8565022A187BC00F117B8 /* TabsViewModel.swift */,
 				8B4760B72281BFAB001AE0AD /* MainTabBarViewController.swift */,
 			);
@@ -211,9 +214,10 @@
 		8B50B47E2284B9A50015B77A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
+				8BF8565722A97C6300F117B8 /* LoginCoordinator.swift */,
 				8B50B47F2284BFE20015B77A /* LoginViewController.swift */,
 				8B50B4802284BFE20015B77A /* LoginViewController.xib */,
+				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -250,19 +254,19 @@
 		8B7AF7D0227CA1490009BB40 /* InstagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
-				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
-				8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */,
-				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
 				8BF8563E229F22E600F117B8 /* Binding */,
 				8BF8564B22A17A7400F117B8 /* Coordinator */,
 				8BF85627229C74AD00F117B8 /* Extensions */,
+				8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */,
+				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
+				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
 				8B83F945228B2CE200AC9260 /* Models */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
+				8B7AF7E3227CA3420009BB40 /* Scenes */,
 				8B50B4832285BFFF0015B77A /* Utils */,
 				8BF85630229DA2D200F117B8 /* Validator */,
-				8B7AF7E3227CA3420009BB40 /* Scenes */,
 				8BF8563B229DF86E00F117B8 /* Views */,
 			);
 			path = InstagramFirebase;
@@ -447,7 +451,6 @@
 			isa = PBXGroup;
 			children = (
 				8BF8564C22A17CEA00F117B8 /* Coordinator.swift */,
-				8BF8564E22A17F4E00F117B8 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				8BF8562F229D894C00F117B8 /* LoginDelegate.swift in Sources */,
 				8B88F45A2293B522002DC737 /* CustomAnimationDismisser.swift in Sources */,
 				8B50B4852285C05D0015B77A /* AlertView.swift in Sources */,
+				8BF8565822A97C6300F117B8 /* LoginCoordinator.swift in Sources */,
 				8BF85638229DD80400F117B8 /* HomeFeedDelegate.swift in Sources */,
 				8B7AF7D2227CA1490009BB40 /* AppDelegate.swift in Sources */,
 				8BF8564F22A17F4E00F117B8 /* AppCoordinator.swift in Sources */,

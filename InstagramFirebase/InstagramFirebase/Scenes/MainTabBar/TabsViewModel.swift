@@ -1,6 +1,5 @@
 import Firebase
 class TabViewModel{
-    
     weak var delegate: TabBarDelegate?
     
     func checkCredentials(){
@@ -8,9 +7,6 @@ class TabViewModel{
             DispatchQueue.main.async { [weak self] in
                 self?.delegate?.showLogin()
             }
-        }
-        else{
-           delegate?.setUpTabs()
         }
     }
 }

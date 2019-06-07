@@ -30,6 +30,7 @@ class LoginViewModel{
 extension LoginViewModel{
     
     func validateForm(){
+        print("VAlidating")
         
         let usernameValidator = VaildatorFactory.validatorFor(type: .requiredField)
         let passwordValidator = VaildatorFactory.validatorFor(type: .requiredField)
