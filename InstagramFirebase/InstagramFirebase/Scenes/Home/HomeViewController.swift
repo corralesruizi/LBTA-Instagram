@@ -14,8 +14,8 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
         setupNavigationItems()
         setupCollectionView()
         BindUI()
-        //homeVM.fetchPosts()
-        //homeVM.fetchFollowingUserIds()
+        homeVM.fetchPosts()
+        homeVM.fetchFollowingUserIds()
     }
     
     func BindUI(){
@@ -26,7 +26,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     fileprivate func setupNavigationItems() {
-        navigationController?.isNavigationBarHidden=false
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cameraIcon"), style: .plain, target: self, action: #selector(ShowCamera))
@@ -91,10 +90,6 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

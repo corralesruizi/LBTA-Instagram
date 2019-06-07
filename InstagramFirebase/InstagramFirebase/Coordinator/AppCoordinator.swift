@@ -9,17 +9,24 @@ protocol TabBarDelegate:class {
 class AppCoordinator: Coordinator
 {
     let window: UIWindow?
-    var tabBarController: MainTabBarController
+    
+    lazy var tabMenuViewModel: TabViewModel = {
+        let tabVM = TabViewModel()
+        tabVM.delegate = self
+        return tabVM
+    }()
+    
+    lazy var tabBarController: MainTabBarController = {
+        let tab = MainTabBarController()
+        tab.tabVM = tabMenuViewModel
+        return tab
+    }()
     
     init(window: UIWindow?) {
         self.window = window
-        tabBarController = MainTabBarController()
     }
     
     override func start() {
-        let tabVM = TabViewModel()
-        tabVM.delegate = self
-        tabBarController.tabVM = tabVM
         showTabs()
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

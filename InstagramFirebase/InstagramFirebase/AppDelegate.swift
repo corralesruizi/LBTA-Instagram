@@ -11,21 +11,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
         appCoordinator = AppCoordinator(window: window)
-        appCoordinator?.start()        
+        appCoordinator?.start()
         attemptRegisterForNotifications(application: application)
         return true
     }
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Registered for notifications:", deviceToken)
+       // print("Registered for notifications:", deviceToken)
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Registered with FCM with token:", fcmToken)
+        //print("Registered with FCM with token:", fcmToken)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
     }
     
     private func attemptRegisterForNotifications(application: UIApplication) {
-        print("Attempting to register APNS...")
+        //print("Attempting to register APNS...")
         
         Messaging.messaging().delegate = self
         

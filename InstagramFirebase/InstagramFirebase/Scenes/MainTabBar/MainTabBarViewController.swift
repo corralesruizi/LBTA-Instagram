@@ -5,20 +5,14 @@ import Photos
 class MainTabBarController: UITabBarController {
     
     var tabVM: TabViewModel?
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TabMenu loaded")
         self.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("TabMenu appearing")
         tabVM?.checkCredentials()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("Presenting another controller")
     }
 }
 
