@@ -14,19 +14,19 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
         setupNavigationItems()
         setupCollectionView()
         BindUI()
-        homeVM.fetchPosts()
-        homeVM.fetchFollowingUserIds()
+        //homeVM.fetchPosts()
+        //homeVM.fetchFollowingUserIds()
     }
     
-    func BindUI()
-    {
+    func BindUI(){
         homeVM.delegate=self
-        homeVM.posts.bind {[unowned self] (observable, value) in
+        homeVM.posts.bind { [unowned self](observable, value) in
             self.cvPosts.reloadData()
         }
     }
     
     fileprivate func setupNavigationItems() {
+        navigationController?.isNavigationBarHidden=false
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navlogo"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "sendMessage"), style: .plain, target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "cameraIcon"), style: .plain, target: self, action: #selector(ShowCamera))
@@ -44,7 +44,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     }
     
     func reloadHomeFeed() {
-        self.cvPosts.reloadData()
+        print("Reloading posts table")
     }
     
     func didLikePost(with post: Post, at index: Int) {
@@ -67,6 +67,7 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let posts = homeVM.posts.value {
+            print(posts.count)
             return posts.count
         }
         return 0
@@ -84,15 +85,23 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
             return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
         let height = 56 + width + 44 + 74
         return CGSize(width: width,height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
     }
 }
 

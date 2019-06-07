@@ -17,6 +17,10 @@ class LoginViewController: UIViewController,LoginDelegate {
         BindUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden=false
+    }
+    
     private func setupUI(){
         navigationController?.isNavigationBarHidden=true
     }

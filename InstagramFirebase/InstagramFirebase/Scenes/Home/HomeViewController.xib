@@ -34,9 +34,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Nce-OY-pg3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1t3-Si-i2Z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Nce-OY-pg3" secondAttribute="bottom" id="OaI-r7-0EI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nce-OY-pg3" secondAttribute="trailing" id="ZNB-lo-w9x"/>
+                <constraint firstItem="Nce-OY-pg3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hsD-ts-gPi"/>
                 <constraint firstItem="Nce-OY-pg3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qw2-AT-5tR"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

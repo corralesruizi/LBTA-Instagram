@@ -40,7 +40,6 @@ class HomeViewModel{
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
                     self?.posts.value=self?.tempPosts ?? []
-                    self?.delegate?.reloadHomeFeed()
                     
                 }, withCancel: { (err) in
                     print("Failed to fetch like info for post:", err)
@@ -68,7 +67,6 @@ class HomeViewModel{
             print("Failed to fetch following user ids:", err)
         }
     }
-    
     
     
     func likePost(for post:Post, index: Int) {
