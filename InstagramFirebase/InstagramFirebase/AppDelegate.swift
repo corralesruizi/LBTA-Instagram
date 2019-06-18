@@ -45,12 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MessagingDelegate,UNUserNo
                 print("Failed to request auth:", err)
                 return
             }
-            
-            if granted {
-                print("Auth granted.")
-            } else {
-                print("Auth denied")
-            }
         }
         application.registerForRemoteNotifications()
     }

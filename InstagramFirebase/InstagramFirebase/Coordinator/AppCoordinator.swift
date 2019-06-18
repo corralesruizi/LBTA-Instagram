@@ -27,9 +27,9 @@ class AppCoordinator: Coordinator
     }
     
     override func start() {
-        showTabs()
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        showTabs()
     }
 }
 

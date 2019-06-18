@@ -6,7 +6,7 @@ class LoginViewModel{
     var username: Observable<String> = Observable()
     var password: Observable<String> = Observable()
     var isValid: Observable<Bool> = Observable()
-    weak var delegate: LoginDelegate?
+    weak var loginDelegate: LoginDelegate?
     
     func login(){
         
@@ -15,15 +15,15 @@ class LoginViewModel{
         
         Auth.auth().signIn(withEmail: email, password: pass, completion: { [weak self] (user, err) in
             if let err = err {
-               self?.delegate?.onLoginFailure(errorMessage: err.localizedDescription)
+               self?.loginDelegate?.onLoginFailure(errorMessage: err.localizedDescription)
                 return
             }
-            self?.delegate?.onLoginSucess()
+            self?.loginDelegate?.onLoginSucess()
         })
     }
     
     func signUp(){
-        delegate?.signUp()
+        loginDelegate?.signUp()
     }
 }
 

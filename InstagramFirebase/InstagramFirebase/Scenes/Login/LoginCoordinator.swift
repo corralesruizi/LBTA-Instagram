@@ -2,34 +2,34 @@ import UIKit
 class LoginCoordinator: Coordinator,LoginDelegate {
     
     private weak var tabMenu: UITabBarController?
-    private weak var delegate: TabBarDelegate?
-    private let rootVC: UINavigationController
+    private weak var tabMenuDelegate: TabBarDelegate?
+    private let navController: UINavigationController
     
     init(tabMenu: UITabBarController){
         self.tabMenu = tabMenu
-        rootVC = UINavigationController()
+        navController = UINavigationController()
     }
     
     override func start() {
         let loginVM = LoginViewModel()
         let loginVC = LoginViewController()
-        loginVM.delegate = self
+        loginVM.loginDelegate = self
         loginVC.loginVM=loginVM
-        rootVC.viewControllers = [loginVC]
-        tabMenu?.present(rootVC, animated: true, completion: nil)
+        navController.viewControllers = [loginVC]
+        tabMenu?.present(navController, animated: true, completion: nil)
     }
     
     func onLoginSucess() {
-        rootVC.dismiss(animated: true, completion: nil)
-        delegate?.showTabs()
+        navController.dismiss(animated: true, completion: nil)
+        tabMenuDelegate?.showTabs()
     }
     
     func onLoginFailure(errorMessage: String) {
-        AlertView.showAlert(view: rootVC, title: "Error", message: errorMessage)
+        AlertView.showAlert(view: navController, title: "Error", message: errorMessage)
     }
     
     func signUp() {
         let signUpVC = SignUpViewController()
-        rootVC.pushViewController(signUpVC, animated: true)
+        navController.pushViewController(signUpVC, animated: true)
     }
 }

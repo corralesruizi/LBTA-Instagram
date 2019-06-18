@@ -66,7 +66,6 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let posts = homeVM.posts.value {
-            print(posts.count)
             return posts.count
         }
         return 0

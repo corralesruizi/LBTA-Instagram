@@ -8,10 +8,12 @@ class MainTabBarController: UITabBarController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Tab didLoad")
         self.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("Tab wilAppear")
         tabVM?.checkCredentials()
     }
 }

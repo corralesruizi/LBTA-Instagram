@@ -55,6 +55,7 @@
 		8B972C5A22965F86008C44EB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C5922965F86008C44EB /* Comment.swift */; };
 		8B972C65229844AD008C44EB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C64229844AD008C44EB /* LoginViewModel.swift */; };
 		8B972C69229852DF008C44EB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C68229852DF008C44EB /* Observable.swift */; };
+		8BB63C0822B3F04A00305F9F /* SingUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */; };
 		8BF85629229C74E500F117B8 /* NSObject+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85628229C74E500F117B8 /* NSObject+Observable.swift */; };
 		8BF8562B229C75F800F117B8 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8562A229C75F800F117B8 /* Bindable.swift */; };
 		8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */; };
@@ -130,6 +131,7 @@
 		8B972C5922965F86008C44EB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8B972C64229844AD008C44EB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8B972C68229852DF008C44EB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewModel.swift; sourceTree = "<group>"; };
 		8BF85628229C74E500F117B8 /* NSObject+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Observable.swift"; sourceTree = "<group>"; };
 		8BF8562A229C75F800F117B8 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Bindable.swift"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */,
 				8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */,
+				8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -216,8 +219,8 @@
 			children = (
 				8BF8565722A97C6300F117B8 /* LoginCoordinator.swift */,
 				8B50B47F2284BFE20015B77A /* LoginViewController.swift */,
-				8B50B4802284BFE20015B77A /* LoginViewController.xib */,
 				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
+				8B50B4802284BFE20015B77A /* LoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -254,14 +257,14 @@
 		8B7AF7D0227CA1490009BB40 /* InstagramFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
+				8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */,
+				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
 				8B7AF7D1227CA1490009BB40 /* AppDelegate.swift */,
 				8B7AF7D8227CA14A0009BB40 /* Assets.xcassets */,
 				8BF8563E229F22E600F117B8 /* Binding */,
 				8BF8564B22A17A7400F117B8 /* Coordinator */,
 				8BF85627229C74AD00F117B8 /* Extensions */,
-				8BF8563F229F27A600F117B8 /* GoogleService-Info.plist */,
-				8B7AF7DD227CA14A0009BB40 /* Info.plist */,
-				8B88F45B2293D1FA002DC737 /* InstagramFirebase.entitlements */,
 				8B83F945228B2CE200AC9260 /* Models */,
 				8BC210822280D47A00FBD0E1 /* Protocols */,
 				8B7AF7E3227CA3420009BB40 /* Scenes */,
@@ -640,6 +643,7 @@
 				8B88F46722960E0B002DC737 /* CustomAccessoryView.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */,
+				8BB63C0822B3F04A00305F9F /* SingUpViewModel.swift in Sources */,
 				8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
 				8BF85632229DA31E00F117B8 /* Validator.swift in Sources */,
@@ -797,8 +801,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InstagramFirebase/InstagramFirebase.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C9NNB947EN;
 				INFOPLIST_FILE = InstagramFirebase/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -808,7 +812,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.corralesruizi.InstaFB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "InstaFB Store";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -821,7 +825,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = InstagramFirebase/InstagramFirebase.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C9NNB947EN;
 				INFOPLIST_FILE = InstagramFirebase/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -831,7 +835,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.corralesruizi.InstaFB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "InstaFB Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
