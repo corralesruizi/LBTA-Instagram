@@ -1,5 +1,7 @@
 import UIKit
 class LoginCoordinator: Coordinator,LoginDelegate {
+   
+    
     
     private weak var tabMenu: UITabBarController?
     private weak var tabMenuDelegate: TabBarDelegate?
@@ -19,6 +21,15 @@ class LoginCoordinator: Coordinator,LoginDelegate {
         tabMenu?.present(navController, animated: true, completion: nil)
     }
     
+    func goToLogin() {
+        navController.popViewController(animated: true)
+    }
+    
+    func goToSignUp() {
+        let signUpVC = SignUpViewController()
+        navController.pushViewController(signUpVC, animated: true)
+    }
+    
     func onLoginSucess() {
         navController.dismiss(animated: true, completion: nil)
         tabMenuDelegate?.showTabs()
@@ -28,8 +39,21 @@ class LoginCoordinator: Coordinator,LoginDelegate {
         AlertView.showAlert(view: navController, title: "Error", message: errorMessage)
     }
     
-    func signUp() {
-        let signUpVC = SignUpViewController()
-        navController.pushViewController(signUpVC, animated: true)
+    func onSignUpSucess() {
+        
+    }
+    
+    func onSignUpFailure(errorMessage: String) {
+        
+    }
+    
+    func showPhotoLibrary(){
+        let photoLibraryCoordinator = PhotoLiubraryCoordinator(navController: navController)
+        addChildCoordinator(photoLibraryCoordinator)
+        photoLibraryCoordinator.start()
+    }
+    
+    func closePhotoLibrary() {
+        
     }
 }

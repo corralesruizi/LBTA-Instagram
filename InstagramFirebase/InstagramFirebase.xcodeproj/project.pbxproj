@@ -55,7 +55,8 @@
 		8B972C5A22965F86008C44EB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C5922965F86008C44EB /* Comment.swift */; };
 		8B972C65229844AD008C44EB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C64229844AD008C44EB /* LoginViewModel.swift */; };
 		8B972C69229852DF008C44EB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B972C68229852DF008C44EB /* Observable.swift */; };
-		8BB63C0822B3F04A00305F9F /* SingUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */; };
+		8BB63C0822B3F04A00305F9F /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB63C0722B3F04A00305F9F /* SignUpViewModel.swift */; };
+		8BDFE1CD22B954D8004D137B /* PhotoLibraryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFE1CC22B954D8004D137B /* PhotoLibraryCoordinator.swift */; };
 		8BF85629229C74E500F117B8 /* NSObject+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF85628229C74E500F117B8 /* NSObject+Observable.swift */; };
 		8BF8562B229C75F800F117B8 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8562A229C75F800F117B8 /* Bindable.swift */; };
 		8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */; };
@@ -131,7 +132,8 @@
 		8B972C5922965F86008C44EB /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8B972C64229844AD008C44EB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8B972C68229852DF008C44EB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpViewModel.swift; sourceTree = "<group>"; };
+		8BB63C0722B3F04A00305F9F /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		8BDFE1CC22B954D8004D137B /* PhotoLibraryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryCoordinator.swift; sourceTree = "<group>"; };
 		8BF85628229C74E500F117B8 /* NSObject+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Observable.swift"; sourceTree = "<group>"; };
 		8BF8562A229C75F800F117B8 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		8BF8562C229C82D800F117B8 /* UIControl+Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Bindable.swift"; sourceTree = "<group>"; };
@@ -176,9 +178,10 @@
 		8B4760B52281BF6E001AE0AD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				8BB63C0722B3F04A00305F9F /* SignUpViewModel.swift */,
 				8B7AF7E4227CA46F0009BB40 /* SignUpViewController.swift */,
 				8B7AF7E5227CA46F0009BB40 /* SignUpViewController.xib */,
-				8BB63C0722B3F04A00305F9F /* SingUpViewModel.swift */,
+				8BDFE1CC22B954D8004D137B /* PhotoLibraryCoordinator.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -218,8 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				8BF8565722A97C6300F117B8 /* LoginCoordinator.swift */,
-				8B50B47F2284BFE20015B77A /* LoginViewController.swift */,
 				8B972C64229844AD008C44EB /* LoginViewModel.swift */,
+				8B50B47F2284BFE20015B77A /* LoginViewController.swift */,
 				8B50B4802284BFE20015B77A /* LoginViewController.xib */,
 			);
 			path = Login;
@@ -643,11 +646,12 @@
 				8B88F46722960E0B002DC737 /* CustomAccessoryView.swift in Sources */,
 				8B83F93D2289FD1200AC9260 /* AddPhotosHeaderView.swift in Sources */,
 				8BF8562D229C82D800F117B8 /* UIControl+Bindable.swift in Sources */,
-				8BB63C0822B3F04A00305F9F /* SingUpViewModel.swift in Sources */,
+				8BB63C0822B3F04A00305F9F /* SignUpViewModel.swift in Sources */,
 				8B795F6B228094280073CA66 /* UIColor+AppColors.swift in Sources */,
 				8B4760BC2281C08B001AE0AD /* UserProfileViewController.swift in Sources */,
 				8BF85632229DA31E00F117B8 /* Validator.swift in Sources */,
 				8B972C69229852DF008C44EB /* Observable.swift in Sources */,
+				8BDFE1CD22B954D8004D137B /* PhotoLibraryCoordinator.swift in Sources */,
 				8BF85636229DD3B900F117B8 /* HomeViewModel.swift in Sources */,
 				8B88F4592293B522002DC737 /* CustomAnimationPresentor.swift in Sources */,
 				8B88F46922960F25002DC737 /* CommentInputTextView.swift in Sources */,

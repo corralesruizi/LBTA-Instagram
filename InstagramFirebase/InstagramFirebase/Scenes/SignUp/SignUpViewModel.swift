@@ -21,13 +21,15 @@ class SignUpViewModel{
             
             if let err = error {
                 self?.errorMessage.value = err.localizedDescription
-                //AlertView.showAlert(view: self, title: "", message: err.localizedDescription)
                 return
             }
             self?.uploadImage()
          })
     }
     
+    func selectPhoto(image: UIImage){
+        self.image.value = image
+    }
     
     private func uploadImage(){
         

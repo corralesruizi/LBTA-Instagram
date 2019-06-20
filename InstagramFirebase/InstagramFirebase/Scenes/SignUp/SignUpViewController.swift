@@ -14,15 +14,19 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
         navigationController?.isNavigationBarHidden=true
     }
     
-    func setPhoto(image: UIImage)
-    {
-        btnAddPhoto.setImage(image, for: .normal)
+    fileprivate func BindUI(){
+        
+        signUpVM?.image.bind(observer: {[weak self] (observer, value) in
+            self?.btnAddPhoto.setImage(value, for: .normal)
+        })
+        
+        signUpVM?.errorMessage.bind(observer: { [weak self](observer, value) in
+            AlertView.showAlert(view: self, title: "Error", message: value)
+        })
     }
-    
     
     fileprivate func setupUI()
     {
@@ -51,24 +55,24 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func singupTouchUpInside(_ sender: UIButton) {
-        //Call SignUp
+        signUpVM?.singUp()
     }
-    
     
     @IBAction func singInAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        //Coordinator
+        //navigationController?.popViewController(animated: true)
     }
     
-    
     @IBAction func addPhotoTouchUpInside(_ sender: UIButton) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate=self
-        imagePicker.allowsEditing=true
-        present(imagePicker, animated: true, completion: nil)
+        //Coordinator
+        //let imagePicker = UIImagePickerController()
+        //imagePicker.delegate=self
+        //imagePicker.allowsEditing=true
+        //present(imagePicker, animated: true, completion: nil)
     }
 }
 
-extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension SignUpViewController: UIImagePickerControllerDelegate
 {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -80,7 +84,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageFromLibrary = originalImage.withRenderingMode(.alwaysOriginal)
         }
-        setPhoto(image: imageFromLibrary)
-        dismiss(animated: true,completion: nil)
+
+        signUpVM?.selectPhoto(image: imageFromLibrary)
     }
 }

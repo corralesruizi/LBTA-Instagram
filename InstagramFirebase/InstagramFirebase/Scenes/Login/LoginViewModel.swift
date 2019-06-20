@@ -23,7 +23,7 @@ class LoginViewModel{
     }
     
     func signUp(){
-        loginDelegate?.signUp()
+        loginDelegate?.goToSignUp()
     }
 }
 

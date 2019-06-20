@@ -20,6 +20,24 @@ extension UITextField : Bindable {
     }
 }
 
+extension UIImageView : Bindable {
+    public typealias BindingType = UIImage
+    
+    public func observingValue() -> UIImage? {
+        return self.image
+    }
+    
+    public func updateValue(with value: UIImage) {
+        self.image = value
+    }
+    
+    public func bind(with observable: Observable<UIImage>) {
+        self.register(for: observable)
+        self.observe(for: observable) { [weak self] (value) in
+            self?.updateValue(with: value)
+        }
+    }
+}
 
 extension UIButton : Bindable {
     public typealias BindingType = Bool

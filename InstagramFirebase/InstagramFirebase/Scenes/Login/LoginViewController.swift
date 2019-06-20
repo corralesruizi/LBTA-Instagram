@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController,LoginDelegate {
+class LoginViewController: UIViewController {
 
     @IBOutlet private weak var txtEmail: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
