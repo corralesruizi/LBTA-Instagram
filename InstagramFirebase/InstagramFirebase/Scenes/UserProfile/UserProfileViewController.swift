@@ -58,6 +58,8 @@ class UserProfileViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+        
+        
     }
     
     fileprivate func fetchUser() {

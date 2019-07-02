@@ -105,7 +105,6 @@ extension SearchViewController:UICollectionViewDataSource,UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-            print("error")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserSearchCollectionViewCell
             cell.user = filteredUsers[indexPath.item]
             return cell

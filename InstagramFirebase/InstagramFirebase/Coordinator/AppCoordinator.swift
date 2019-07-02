@@ -36,6 +36,7 @@ class AppCoordinator: Coordinator
 extension AppCoordinator: TabBarDelegate
 {
     func showTabs() {
+        
         removeAllChildCoordinatorsWith(type: LoginCoordinator.self)
         let homeController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"),root: HomeViewController())
         let searchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"),root: SearchViewController())
@@ -44,17 +45,19 @@ extension AppCoordinator: TabBarDelegate
         let userProfileController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"),
                                                           root: UserProfileViewController())
         
-        tabBarController.viewControllers=[homeController,
+        let vcs=[homeController,
                          searchController,
                          cameraController,
                          likeController,
                          userProfileController]
         
+        tabBarController.setViewControllers(vcs, animated: true)
         alignImages()
     }
     
     func showLogin() {
         let loginCoordinator = LoginCoordinator(tabMenu: tabBarController)
+        loginCoordinator.tabMenuDelegate = self
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start()
     }

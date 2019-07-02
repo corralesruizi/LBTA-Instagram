@@ -7,10 +7,13 @@ class HomeViewModel{
     var posts: Observable<[Post]> = Observable<[Post]>([Post]())
     
     func fetchPosts() {
-        guard var posts = posts.value else {return}
-        posts.removeAll()
-        
+        print("fetching posts")
+        if var posts = posts.value{
+            posts.removeAll()
+        }
+    
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        print(uid)
         Database.fetchUserWithUID(uid: uid) { [weak self](user) in
             self?.fetchPostsWithUser(user: user)
         }
@@ -41,7 +44,6 @@ class HomeViewModel{
                     self?.posts.value?.sort(by: { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
-                    //self?.posts.value=self?.tempPosts ?? []
                     
                 }, withCancel: { (err) in
                     print("Failed to fetch like info for post:", err)

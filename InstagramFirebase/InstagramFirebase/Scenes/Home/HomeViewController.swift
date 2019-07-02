@@ -11,14 +11,18 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("home did load")
         setupNavigationItems()
         setupCollectionView()
         BindUI()
+        homeVM.fetchPosts()
+        homeVM.fetchFollowingUserIds()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        homeVM.fetchPosts()
-        homeVM.fetchFollowingUserIds()
+        super.viewWillAppear(animated)
+        print("home will appear")
     }
     
     func BindUI(){
@@ -68,8 +72,7 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if let posts = homeVM.posts.value {
-            print("post count \(posts.count)")
+        if let posts = homeVM.posts.value { 
             return posts.count
         }
         return 0

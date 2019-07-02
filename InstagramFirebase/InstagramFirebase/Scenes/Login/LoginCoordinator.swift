@@ -1,10 +1,8 @@
 import UIKit
 class LoginCoordinator: Coordinator,LoginDelegate {
    
-    
-    
     private weak var tabMenu: UITabBarController?
-    private weak var tabMenuDelegate: TabBarDelegate?
+    weak var tabMenuDelegate: TabBarDelegate?
     private let navController: UINavigationController
     
     init(tabMenu: UITabBarController){

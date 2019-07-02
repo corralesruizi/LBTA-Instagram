@@ -15,7 +15,7 @@ extension Database {
         }
     }
     
-    static func fetchPostsWithUser(user: firebaseUser,completion: @escaping ([Post])->()) {
+    static func errorfetchPostsWithUser(user: firebaseUser,completion: @escaping ([Post])->()) {
         
         var posts = [Post]()
         let ref = Database.database().reference().child("posts").child(user.uid)
