@@ -5,9 +5,11 @@ class HomeViewModel{
     
     weak var delegate: HomeFeedDelegate?
     var posts: Observable<[Post]> = Observable<[Post]>([Post]())
-    var tempPosts = [Post]()
- 
+    
     func fetchPosts() {
+        guard var posts = posts.value else {return}
+        posts.removeAll()
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Database.fetchUserWithUID(uid: uid) { [weak self](user) in
             self?.fetchPostsWithUser(user: user)
@@ -35,11 +37,11 @@ class HomeViewModel{
                         post.hasLiked = false
                     }
                     
-                    self?.tempPosts.append(post)
-                    self?.tempPosts.sort(by: { (p1, p2) -> Bool in
+                    self?.posts.value?.append(post)
+                    self?.posts.value?.sort(by: { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
-                    self?.posts.value=self?.tempPosts ?? []
+                    //self?.posts.value=self?.tempPosts ?? []
                     
                 }, withCancel: { (err) in
                     print("Failed to fetch like info for post:", err)

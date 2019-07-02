@@ -20,6 +20,10 @@ public class Observable<ObservedType> {
     
     public func bind(observer: @escaping Observer) {
         self.observers.append(observer)
+        
+        if let value = self.value{
+        notifyObservers(value)
+        }
     }
     
     private func notifyObservers(_ value: ObservedType) {

@@ -1,5 +1,6 @@
 import Foundation
 import Firebase
+
 extension Database {
     
     static func fetchUserWithUID(uid: String, completion: @escaping (firebaseUser) -> ()) {

@@ -7,7 +7,6 @@ class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning 
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        //my custom transition animation code logic
         
         let containerView = transitionContext.containerView
         
@@ -20,7 +19,6 @@ class CustomAnimationDismisser: NSObject, UIViewControllerAnimatedTransitioning 
         let vwHeight = UIScreen.main.bounds.height
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            //animation??
             
             fromView.frame = CGRect(x: -vwWidth, y: 0, width: vwWidth, height: vwHeight)
             toView.frame = CGRect(x: 0, y: 0, width: vwWidth, height: vwHeight)

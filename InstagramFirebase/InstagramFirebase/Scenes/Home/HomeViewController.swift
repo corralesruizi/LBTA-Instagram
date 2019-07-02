@@ -14,6 +14,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate,HomePostCellDele
         setupNavigationItems()
         setupCollectionView()
         BindUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         homeVM.fetchPosts()
         homeVM.fetchFollowingUserIds()
     }
@@ -66,6 +69,7 @@ extension HomeViewController:UICollectionViewDataSource,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let posts = homeVM.posts.value {
+            print("post count \(posts.count)")
             return posts.count
         }
         return 0
