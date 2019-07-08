@@ -62,6 +62,9 @@ class SignUpViewController: UIViewController {
                 return
             }
             
+            
+            
+            
             guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
             let filename = NSUUID().uuidString

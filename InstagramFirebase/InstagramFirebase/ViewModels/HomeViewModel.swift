@@ -14,23 +14,6 @@ class HomeViewModel{
         }
     }
     
-//    func fetchPostsWithUser(user: firebaseUser) {
-//
-//        Database.fetchPostsWithUser(user: user) { [weak self](postsFromUser) in
-//            print("Fetching posts")
-//
-//            print("appending ")
-//            self?.tempPosts.append(contentsOf: postsFromUser)
-//            self?.tempPosts.sort(by: { (p1, p2) -> Bool in
-//                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-//            })
-//
-//            self?.posts.value=self?.tempPosts ?? []
-//            self?.delegate?.reloadHomeFeed()
-//        }
-//    }
-    
-    
     fileprivate func fetchPostsWithUser(user: firebaseUser) {
         let ref = Database.database().reference().child("posts").child(user.uid)
         ref.observeSingleEvent(of: .value, with: {[weak self] (snapshot) in

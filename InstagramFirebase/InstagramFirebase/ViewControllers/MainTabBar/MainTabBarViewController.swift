@@ -7,10 +7,12 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        
+        
         if Auth.auth().currentUser == nil {
-            DispatchQueue.main.async { [weak self] in
+            DispatchQueue.main.async {
                 let loginController = LoginViewController()
-                self?.present(UINavigationController(rootViewController: loginController),
+                self.present(UINavigationController(rootViewController: loginController),
                              animated: true, completion: nil)
             }
             return
