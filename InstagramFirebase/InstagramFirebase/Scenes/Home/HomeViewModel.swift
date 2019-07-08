@@ -11,7 +11,7 @@ class HomeViewModel{
         if var posts = posts.value{
             posts.removeAll()
         }
-    
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         print(uid)
         Database.fetchUserWithUID(uid: uid) { [weak self](user) in
